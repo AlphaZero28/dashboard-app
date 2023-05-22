@@ -11,12 +11,15 @@
     padding-bottom: 12px;
     text-align: center;
     background-color: #04AA6D;
-    color: white
+    color: white;
+    font-size: large;
+    /* font-size: 'large'; */
 }
 
 .td {
     border: 1px solid #ddd;
     padding: 8px;
+    font-size: 16;
 }
 
 /* .tr {

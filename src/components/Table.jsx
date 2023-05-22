@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react'
 import styles from './table.module.css'
 import { LeadAPI } from '../api/LeadAPI'
-import { useTable } from 'react-table'
+import { useTable, useFilters } from 'react-table'
 import { COLUMNS } from './Columns'
 
 
@@ -22,10 +22,13 @@ function Table() {
 
     const columns = useMemo(() => COLUMNS, [])
     const data = useMemo(() => leadData, [])
-    const tableInstance = useTable({
-        columns,
-        data
-    })
+    const tableInstance = useTable(
+        {
+            columns,
+            data
+        },
+        useFilters
+    )
 
     const { getTableProps,
         getTableBodyProps,
@@ -44,6 +47,9 @@ function Table() {
                                 headerGroup.headers.map((column) => (
                                     <th {...column.getHeaderProps()} className={styles.th}>
                                         {column.render('Header')}
+                                        <div>
+                                            {column.canFilter ? column.render('Filter') : null}
+                                        </div>
                                     </th>
                                 ))
                             }
