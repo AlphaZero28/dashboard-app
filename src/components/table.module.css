@@ -1,7 +1,29 @@
 .header {
-    display: flex;
-    flex-direction: row;
-    font-size: large;
-    font-weight: 600;
-
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
 }
+
+.th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white
+}
+
+.td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/* .tr {
+    background-color: white;
+    color: black;
+} */
+
+/* .tr:hover {
+    background-color: #ddd;
+} */
