@@ -24,25 +24,25 @@ export const COLUMNS = (handleProduktChange, handleStatusChange, handleScoreChan
     },
     {
         Header: "Name",
-        accessor: 'Name',
+        accessor: 'name',
         Filter: QuelleFilter,
         disableFilters: true
     },
     {
         Header: "Telefon",
-        accessor: 'Telefon',
+        accessor: 'telefon',
         Filter: QuelleFilter,
         disableFilters: true
     },
     {
         Header: "E-Mail",
-        accessor: 'E-mail',
+        accessor: 'email',
         Filter: QuelleFilter,
         disableFilters: true
     },
     {
         Header: "Produkt",
-        accessor: 'Produkt',
+        accessor: 'produkt',
         Filter: ({ column }) => (
             <FilterDropdown
                 column={column}
@@ -65,7 +65,7 @@ export const COLUMNS = (handleProduktChange, handleStatusChange, handleScoreChan
     },
     {
         Header: "Status",
-        accessor: 'Status',
+        accessor: 'status',
         Filter: ({ column }) => (
             <FilterDropdown
                 column={column}
@@ -86,7 +86,7 @@ export const COLUMNS = (handleProduktChange, handleStatusChange, handleScoreChan
     },
     {
         Header: "Score",
-        accessor: 'Score',
+        accessor: 'score',
         Filter: ({ column }) => (
             <FilterDropdown
                 column={column}
@@ -107,12 +107,12 @@ export const COLUMNS = (handleProduktChange, handleStatusChange, handleScoreChan
     },
     {
         Header: "Quelle",
-        accessor: 'Quelle',
+        accessor: 'quelle',
         Filter: QuelleFilter
     },
     {
         Header: "Datum",
-        accessor: 'Datum',
+        accessor: 'datum',
         // Cell: ({ val }) => {
         //     let formattedDate = '';
 

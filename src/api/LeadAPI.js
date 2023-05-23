@@ -11,6 +11,7 @@ class LeadAPI {
     }
 
     get_all_leads(onResponse, onError) {
+        // console.log('getting leads')
         axios.get(url + 'lead-segment/', this.headers)
             .then(onResponse)
             .catch(onError)

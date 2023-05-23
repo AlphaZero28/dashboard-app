@@ -30,14 +30,14 @@ function NewLead({ setLeadData }) {
         event.preventDefault()
 
         const data = {
-            'Name': name,
-            'Telefon': telefon,
-            'E-Mail': email,
-            'Produkt': produkt,
-            'Status': status,
-            'Score': score,
-            'Quelle': quelle,
-            "Datum": date
+            'name': name,
+            'telefon': telefon,
+            'email': email,
+            'produkt': produkt,
+            'status': status,
+            'score': score,
+            'quelle': quelle,
+            "datum": date
         }
 
         let leadAPI = new LeadAPI()
