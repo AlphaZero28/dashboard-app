@@ -15,6 +15,30 @@ class LeadAPI {
             .then(onResponse)
             .catch(onError)
     }
+
+    update_produkt(onResponse, onError, data) {
+        axios.put(url + 'update-produkt/', data, this.headers)
+            .then(onResponse)
+            .catch(onError)
+    }
+
+    update_status(onResponse, onError, data) {
+        axios.put(url + 'update-status/', data, this.headers)
+            .then(onResponse)
+            .catch(onError)
+    }
+
+    update_score(onResponse, onError, data) {
+        axios.put(url + 'update-score/', data, this.headers)
+            .then(onResponse)
+            .catch(onError)
+    }
+
+    new_lead(onResponse, onError, data) {
+        axios.post(url + 'new-lead/', data, this.headers)
+            .then(onResponse)
+            .catch(onError)
+    }
 }
 
 export { LeadAPI }

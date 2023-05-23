@@ -1,7 +1,17 @@
-.header {
-    font-family: Arial, Helvetica, sans-serif;
+.tableContainer {
+    /* display: grid;
+    grid-template-rows: 1fr 1fr;
+    /* Divide the container into two rows with equal height */
+
+}
+
+.table {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-collapse: collapse;
     width: 100%;
+
+
 }
 
 .th {
@@ -10,23 +20,29 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #04AA6D;
+    background-color: #4CAF50;
     color: white;
     font-size: large;
     /* font-size: 'large'; */
+}
+
+.tbody {
+    /* height: '30%';
+    overflow: scroll; */
 }
 
 .td {
     border: 1px solid #ddd;
     padding: 8px;
     font-size: 16;
+
 }
 
-/* .tr {
+.tr {
     background-color: white;
     color: black;
-} */
+}
 
-/* .tr:hover {
+.tr:hover {
     background-color: #ddd;
-} */
+}

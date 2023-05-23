@@ -1,9 +1,21 @@
-import QuelleFilter from "./QuelleFilter"
-import ColumnFilterDrop from "./ColumnFilterDropdown"
-import DateFilter from "./DateFilter"
+import QuelleFilter from "./header-component/QuelleFilter"
+import FilterDropdown from "./header-component/FilterDropdown"
+import DateFilter from "./header-component/DateFilter"
 import { format, parse } from "date-fns"
+import ScoreSelect from "./cell-component/ScoreSelect"
+import { ScoreOption, StatusOption, ProduktOption } from "../config"
 
-export const COLUMNS = [
+
+const filterTypes = {
+    exactText: (rows, id, filterValue) => {
+        if (filterValue === '') {
+            return rows; // Return all rows if filterValue is empty (All option selected)
+        }
+        return rows.filter((row) => row.values[id] === filterValue);
+    },
+};
+
+export const COLUMNS = (handleProduktChange, handleStatusChange, handleScoreChange, tableData) => [
     {
         Header: 'Lead No.',
         accessor: 'id',
@@ -31,40 +43,66 @@ export const COLUMNS = [
     {
         Header: "Produkt",
         accessor: 'Produkt',
-        Filter: QuelleFilter,
-        disableFilters: true,
-        Cell: ({ value }) => (
-            <select value={value}>
-                <option value={'Warmepumpe'}> Warmepumpe </option>
-                <option value={'Klima'}> Klima </option>
-                <option value={'Gasgerat'}> Gasgerat </option>
-                <option value={'Warmepumpe + PV'}> Warmepumpe + PV </option>
-            </select>
+        Filter: ({ column }) => (
+            <FilterDropdown
+                column={column}
+                optionData={ProduktOption}
+            />
+        ),
+        filter: 'exactText',
+        Cell: ({ row }) => (
+            <ScoreSelect
+                optionData={ProduktOption}
+                value={row.values.Produkt}
+                row={row}
+                onChange={newVal => {
+                    const updatedItem = { ...row.original, Produkt: newVal }
+                    handleProduktChange(updatedItem)
+                }}
+            />
         )
+
     },
     {
         Header: "Status",
         accessor: 'Status',
-        Filter: ColumnFilterDrop,
-        Cell: ({ value }) => (
-            <select value={value}>
-                <option value={'LEAD-NEU'}> LEAD-NEU</option>
-                <option value={'LEAD in Kontakt'}> LEAD in Kontakt</option>
-                <option value={'Angebot Versendet'}> Angebot Versendet</option>
-            </select>
+        Filter: ({ column }) => (
+            <FilterDropdown
+                column={column}
+                optionData={StatusOption}
+            />
+        ),
+        Cell: ({ row }) => (
+            <ScoreSelect
+                optionData={StatusOption}
+                value={row.values.Status}
+                row={row}
+                onChange={newVal => {
+                    const updatedItem = { ...row.original, Status: newVal }
+                    handleStatusChange(updatedItem)
+                }}
+            />
         )
     },
     {
         Header: "Score",
         accessor: 'Score',
-        Filter: QuelleFilter,
-        disableFilters: true,
-        Cell: ({ value }) => (
-            <select value={value}>
-                <option value={'A'}> A </option>
-                <option value={'B'}> B </option>
-                <option value={'C'}> C </option>
-            </select>
+        Filter: ({ column }) => (
+            <FilterDropdown
+                column={column}
+                optionData={StatusOption}
+            />
+        ),
+        Cell: ({ row }) => (
+            <ScoreSelect
+                optionData={ScoreOption}
+                value={row.values.Score}
+                row={row}
+                onChange={newVal => {
+                    const updatedItem = { ...row.original, Score: newVal }
+                    handleScoreChange(updatedItem)
+                }}
+            />
         )
     },
     {
