@@ -53,12 +53,12 @@ export const COLUMNS = (handleOnChange, leadData) => [
         Cell: ({ row }) => (
             <ScoreSelect
                 optionData={ProduktOption}
-                value={row.values.Produkt}
+                value={row.values.produkt}
                 row={row}
                 onChange={(row, newVal) => {
                     const updatedData = leadData.map((item) => {
                         if (item.id === row.original.id) {
-                            return { ...item, Produkt: newVal }
+                            return { ...item, produkt: newVal }
                         }
                         return item
                     });
@@ -80,12 +80,12 @@ export const COLUMNS = (handleOnChange, leadData) => [
         Cell: ({ row }) => (
             <ScoreSelect
                 optionData={StatusOption}
-                value={row.values.Status}
+                value={row.values.status}
                 row={row}
                 onChange={(row, newVal) => {
                     const updatedData = leadData.map((item) => {
                         if (item.id === row.original.id) {
-                            return { ...item, Status: newVal }
+                            return { ...item, status: newVal }
                         }
                         return item
                     });
@@ -106,12 +106,12 @@ export const COLUMNS = (handleOnChange, leadData) => [
         Cell: ({ row }) => (
             <ScoreSelect
                 optionData={ScoreOption}
-                value={row.values.Score}
+                value={row.values.score}
                 row={row}
                 onChange={(row, newVal) => {
                     const updatedData = leadData.map((item) => {
                         if (item.id === row.original.id) {
-                            return { ...item, Score: newVal }
+                            return { ...item, score: newVal }
                         }
                         return item
                     });

@@ -7,9 +7,20 @@ import ExportCSV from './utils/ExportCSV'
 import NewLead from './utils/NewLead'
 import SaveData from './utils/SaveData'
 
-
 function Table() {
-    const [leadData, setLeadData] = useState([])
+    const [leadData, setLeadData] = useState([
+        // {
+        //   datum: '2023-05-25T00:00:00Z',
+        //   email: 'ra@gmail.com',
+        //   id: 1,
+        //   name: 'rag',
+        //   produkt: 'Warmepumpe',
+        //   quelle: 'hello',
+        //   score: 'A',
+        //   status: 'LEAD-NEU',
+        //   telefon: '0188'
+        // }
+    ])
 
     const onResponse = res => {
         setLeadData(res.data)
@@ -44,12 +55,8 @@ function Table() {
         useFilters
     )
 
-    const { getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        rows,
-        prepareRow
-    } = tableInstance
+    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+        tableInstance
 
     return (
         <div>
@@ -57,48 +64,35 @@ function Table() {
                 <table {...getTableProps()} className={styles.table}>
                     <thead>
                         {
-                            headerGroups.map((headerGroup) => (
+                            headerGroups.map(headerGroup => (
                                 <tr {...headerGroup.getHeaderGroupProps()} className={styles.tr}>
-                                    {
-                                        headerGroup.headers.map((column) => (
-                                            <th {...column.getHeaderProps()} className={styles.th}>
-                                                {column.render('Header')}
-                                                <div>
-                                                    {column.canFilter ? column.render('Filter') : null}
-                                                </div>
-                                            </th>
-                                        ))
-                                    }
-
+                                    {headerGroup.headers.map(column => (
+                                        <th {...column.getHeaderProps()} className={styles.th}>
+                                            {column.render('Header')}
+                                            <div>
+                                                {column.canFilter ? column.render('Filter') : null}
+                                            </div>
+                                        </th>
+                                    ))}
                                 </tr>
-                            ))
-                        }
+                            ))}
                     </thead>
                     <tbody {...getTableBodyProps()} className={styles.tbody}>
-                        {
-                            rows.map(row => {
-                                prepareRow(row)
-                                return (
-                                    <tr {...row.getRowProps()} className={styles.tr}>
-                                        {
-                                            row.cells.map((cell) =>
-                                            (
-                                                <td {...cell.getCellProps()} className={styles.td}>
-                                                    {cell.render('Cell')}
-                                                </td>
-                                            )
-
-                                            )
-                                        }
-
-                                    </tr>
-                                )
-                            })
-                        }
+                        {rows.map(row => {
+                            prepareRow(row)
+                            return (
+                                <tr {...row.getRowProps()} className={styles.tr}>
+                                    {row.cells.map(cell => (
+                                        <td {...cell.getCellProps()} className={styles.td}>
+                                            {cell.render('Cell')}
+                                        </td>
+                                    ))}
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>
-
             <div className={styles.btnContainer}>
                 <SaveData leadData={leadData} />
                 <ExportCSV data={leadData} />
@@ -106,7 +100,6 @@ function Table() {
             </div>
 
             <NewLead setLeadData={setLeadData} />
-
         </div>
     )
 }
