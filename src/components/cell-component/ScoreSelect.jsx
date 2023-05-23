@@ -6,7 +6,7 @@ const ScoreSelect = ({ optionData, value, onChange, row }) => {
     const handleOnChange = (e) => {
         const newValue = e.target.value;
         setSelectedValue(newValue)
-        onChange(newValue);
+        onChange(row, newValue);
     };
 
     return (

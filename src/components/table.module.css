@@ -46,3 +46,9 @@
 .tr:hover {
     background-color: #ddd;
 }
+
+.btnContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}

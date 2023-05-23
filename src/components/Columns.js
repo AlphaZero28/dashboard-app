@@ -15,7 +15,7 @@ const filterTypes = {
     },
 };
 
-export const COLUMNS = (handleProduktChange, handleStatusChange, handleScoreChange, tableData) => [
+export const COLUMNS = (handleOnChange, leadData) => [
     {
         Header: 'Lead No.',
         accessor: 'id',
@@ -24,25 +24,25 @@ export const COLUMNS = (handleProduktChange, handleStatusChange, handleScoreChan
     },
     {
         Header: "Name",
-        accessor: 'Name',
+        accessor: 'name',
         Filter: QuelleFilter,
         disableFilters: true
     },
     {
         Header: "Telefon",
-        accessor: 'Telefon',
+        accessor: 'telefon',
         Filter: QuelleFilter,
         disableFilters: true
     },
     {
         Header: "E-Mail",
-        accessor: 'E-mail',
+        accessor: 'email',
         Filter: QuelleFilter,
         disableFilters: true
     },
     {
         Header: "Produkt",
-        accessor: 'Produkt',
+        accessor: 'produkt',
         Filter: ({ column }) => (
             <FilterDropdown
                 column={column}
@@ -55,9 +55,14 @@ export const COLUMNS = (handleProduktChange, handleStatusChange, handleScoreChan
                 optionData={ProduktOption}
                 value={row.values.Produkt}
                 row={row}
-                onChange={newVal => {
-                    const updatedItem = { ...row.original, Produkt: newVal }
-                    handleProduktChange(updatedItem)
+                onChange={(row, newVal) => {
+                    const updatedData = leadData.map((item) => {
+                        if (item.id === row.original.id) {
+                            return { ...item, Produkt: newVal }
+                        }
+                        return item
+                    });
+                    handleOnChange(updatedData)
                 }}
             />
         )
@@ -65,7 +70,7 @@ export const COLUMNS = (handleProduktChange, handleStatusChange, handleScoreChan
     },
     {
         Header: "Status",
-        accessor: 'Status',
+        accessor: 'status',
         Filter: ({ column }) => (
             <FilterDropdown
                 column={column}
@@ -77,16 +82,21 @@ export const COLUMNS = (handleProduktChange, handleStatusChange, handleScoreChan
                 optionData={StatusOption}
                 value={row.values.Status}
                 row={row}
-                onChange={newVal => {
-                    const updatedItem = { ...row.original, Status: newVal }
-                    handleStatusChange(updatedItem)
+                onChange={(row, newVal) => {
+                    const updatedData = leadData.map((item) => {
+                        if (item.id === row.original.id) {
+                            return { ...item, Status: newVal }
+                        }
+                        return item
+                    });
+                    handleOnChange(updatedData)
                 }}
             />
         )
     },
     {
         Header: "Score",
-        accessor: 'Score',
+        accessor: 'score',
         Filter: ({ column }) => (
             <FilterDropdown
                 column={column}
@@ -98,21 +108,26 @@ export const COLUMNS = (handleProduktChange, handleStatusChange, handleScoreChan
                 optionData={ScoreOption}
                 value={row.values.Score}
                 row={row}
-                onChange={newVal => {
-                    const updatedItem = { ...row.original, Score: newVal }
-                    handleScoreChange(updatedItem)
+                onChange={(row, newVal) => {
+                    const updatedData = leadData.map((item) => {
+                        if (item.id === row.original.id) {
+                            return { ...item, Score: newVal }
+                        }
+                        return item
+                    });
+                    handleOnChange(updatedData)
                 }}
             />
         )
     },
     {
         Header: "Quelle",
-        accessor: 'Quelle',
+        accessor: 'quelle',
         Filter: QuelleFilter
     },
     {
         Header: "Datum",
-        accessor: 'Datum',
+        accessor: 'datum',
         // Cell: ({ val }) => {
         //     let formattedDate = '';
 

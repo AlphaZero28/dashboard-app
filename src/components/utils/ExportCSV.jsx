@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './exportscsv.module.css'
+import styles from './button.module.css'
 import { saveAs } from 'file-saver'
 
 function ExportCSV({ data }) {
@@ -29,7 +29,7 @@ function ExportCSV({ data }) {
         <div>
             <button
                 onClick={() => exportToCSV(data)}
-                className={styles.csvBtn}
+                className={styles.btn}
             >
                 EXPORT CSV
             </button>

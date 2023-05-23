@@ -5,6 +5,7 @@ import { useTable, useFilters } from 'react-table'
 import { COLUMNS } from './Columns'
 import ExportCSV from './utils/ExportCSV'
 import NewLead from './utils/NewLead'
+import SaveData from './utils/SaveData'
 
 
 function Table() {
@@ -18,36 +19,23 @@ function Table() {
         console.log(err)
     }
     let leadAPI = new LeadAPI
+
     useEffect(() => {
         leadAPI.get_all_leads(onResponse, onError)
     }, [])
 
-    const handleProduktChange = (updatedData) => {
+    const handleOnChange = (updatedData) => {
         console.log('updated', updatedData);
-        leadAPI.update_produkt(onResponse, onError, updatedData)
-        // setLeadData(updatedData)
-    }
-
-    const handleStatusChange = (updatedData) => {
-        console.log('updated', updatedData);
-        leadAPI.update_status(onResponse, onError, updatedData)
-        // setLeadData(updatedData)
-    }
-    const handleScoreChange = (updatedData) => {
-        console.log('updated', updatedData);
-        leadAPI.update_score(onResponse, onError, updatedData)
-        // setLeadData(updatedData)
+        setLeadData(updatedData)
     }
 
     const columns = useMemo(() =>
         COLUMNS(
-            handleProduktChange,
-            handleStatusChange,
-            handleScoreChange,
+            handleOnChange,
             leadData),
-        [])
+        [leadData])
 
-    const data = useMemo(() => leadData, [])
+    const data = useMemo(() => leadData, [leadData])
     const tableInstance = useTable(
         {
             columns,
@@ -110,7 +98,13 @@ function Table() {
                     </tbody>
                 </table>
             </div>
-            <ExportCSV data={leadData} />
+
+            <div className={styles.btnContainer}>
+                <SaveData leadData={leadData} />
+                <ExportCSV data={leadData} />
+
+            </div>
+
             <NewLead setLeadData={setLeadData} />
 
         </div>
