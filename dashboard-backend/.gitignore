@@ -1,0 +1,7 @@
+/.idea
+/venv
+
+/dashboard/templates
+
+dashboard_backend.zip
+db.sqlite3
