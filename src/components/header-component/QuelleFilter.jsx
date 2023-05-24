@@ -8,10 +8,12 @@ function QuelleFilter({ column }) {
         borderRadius: '10px',
         height: '22px',
         width: '8rem',
-        outline: 'none',
+        borderWidth: 0,
+        outlineWidth: 0,
         marginTop: '5px',
         fontSize: '14',
-        paddingLeft: '10px'
+        paddingLeft: '10px',
+
 
         // border: '0px',
     }

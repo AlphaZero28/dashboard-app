@@ -1,21 +1,63 @@
-.btn {
-    background-color: #4CAF50;
-    border: 1px solid #4CAF50;
+.savebtn {
+    background-color: white;
+    border: 2px solid #1b801f;
     border-radius: 10px;
-    color: white;
+    color: black;
+
     padding: 10px 30px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 15px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    transition: background-color 0.3s ease;
+
+}
+
+.savebtn:hover {
+    background-color: #1b801f;
+    color: white;
+    box-shadow: rgba(60, 64, 67, .3) 0 5px 5px 0, rgba(60, 64, 67, .15) 0 10px 8px 3px;
+}
+
+.savebtn:focus {
+    background-color: #1b801f;
+    color: white;
+
+    outline: 2px solid #1b801f;
+}
+
+.exportBtn {
+    background-color: white;
+    border: 2px solid #227cdc;
+    border-radius: 10px;
+    color: black;
+
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
     margin-right: 10px;
     /* margin: 10px 2px; */
     cursor: pointer;
 
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    transition: background-color 0.3s ease;
 }
 
-.btn:hover {
-    background-color: #4CAF50;
-    border: 1px solid #4CAF50;
+.exportBtn:hover {
+    background-color: #227cdc;
+    color: white;
     box-shadow: rgba(60, 64, 67, .3) 0 5px 5px 0, rgba(60, 64, 67, .15) 0 10px 8px 3px;
+}
+
+.exportBtn:focus {
+    background-color: #227cdc;
+    color: white;
+
+    outline: 2px solid #227cdc;
 }

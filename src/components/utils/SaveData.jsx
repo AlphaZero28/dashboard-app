@@ -18,7 +18,7 @@ function SaveData({ leadData }) {
     }
 
     return (
-        <button className={styles.btn} onClick={handleOnClick}>
+        <button className={styles.savebtn} onClick={handleOnClick}>
             Speichern
         </button>
 

@@ -28,7 +28,7 @@ function ExportCSV({ data }) {
     return (
         <button
             onClick={() => exportToCSV(data)}
-            className={styles.btn}
+            className={styles.exportBtn}
         >
             EXPORT CSV
         </button>

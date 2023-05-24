@@ -1,14 +1,115 @@
 .Btn {
-    background-color: #4CAF50;
-    border: 1px solid #4CAF50;
+    /* background-color: #34495E; */
+    background-color: white;
+    border: 2px solid #34495E;
     border-radius: 10px;
-    color: white;
-    padding: 12px 30px;
+    color: black;
+    /* width: 11rem; */
+
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
+
     display: inline-block;
-    font-size: 16px;
+    font-size: 15px;
     margin: 10px 2px;
     cursor: pointer;
+
     box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    transition: background-color 0.3s ease;
+}
+
+.Btn:hover {
+    background-color: #34495E;
+    color: white;
+}
+
+.Btn:focus {
+    background-color: #34495E;
+    color: white;
+    outline: 2px solid #34495E;
+
+}
+
+.modalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(200, 200, 200, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.modalContainer {
+    width: 500px;
+    height: 750px;
+    overflow-y: auto;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.modalCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+    /* justify-content: ; */
+}
+
+.closeBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modalTitle {
+    display: inline-block;
+    text-align: center;
+    /* margin-top: 10px; */
+}
+
+.title {
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.body {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* font-size: 1rem; */
+    text-align: center;
+}
+
+.submitBtn {
+    width: 250px;
+    height: 35px;
+    margin: 10px;
+    border: none;
+    background-color: rgb(63, 115, 211);
+    color: white;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.submitBtn:hover {
+    background-color: rgb(40, 94, 195);
+}
+
+.submitBtn:focus {
+    background-color: rgb(40, 94, 195);
+    outline: 1px solid lightgrey;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

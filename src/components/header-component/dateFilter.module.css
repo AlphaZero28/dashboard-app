@@ -7,8 +7,10 @@
     border-radius: 5px;
     height: 25px;
     outline: none;
-    width: 6rem;
+
+    width: 7rem;
     border: 1px solid black;
 
     margin-top: 5px;
+    text-align: center;
 }

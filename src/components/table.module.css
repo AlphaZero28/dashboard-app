@@ -7,24 +7,22 @@
 
 .table {
     margin-top: 5px;
-    /* font-family: Arial, Helvetica, sans-serif; */
-
     border-collapse: collapse;
     width: 100%;
-
 
 }
 
 .th {
     border: 1px solid #ddd;
-    padding: 8px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 10px 8px;
+
     text-align: center;
     background-color: #36304a;
     /* background-color: #333333; */
     color: white;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Merriweather', serif; */
+    /* font-family: 'Roboto', sans-serif; */
     font-size: 16px;
 }
 
@@ -34,20 +32,25 @@
 }
 
 .td {
-    border: 1px solid #ddd;
+    border: 1px solid lightgrey;
     padding: 8px;
-    font-size: 16;
+    font-size: 14px;
+
+    /* font-family: 'Nunito Sans', sans-serif; */
+    /* font-family: 'Merriweather', serif; */
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Roboto', sans-serif;
 
 }
 
 .tr {
     background-color: white;
     color: black;
-    border: 1px solid #ddd;
+    /* border: 1px solid #812a2a; */
 }
 
 .tr:nth-child(even) {
-    background-color: #dddbdb;
+    background-color: #efeded;
 }
 
 .tr:hover {
@@ -63,39 +66,90 @@
 .paginationContainer {
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
+    /* margin-top: 15px; */
+}
+
+.paginationInfo {
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+
+    padding: 5px 15px;
+
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    /* font-family: 'Nunito Sans', sans-serif; */
 }
 
 .paginationUpper {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .btn {
     /* padding: 10px 20px; */
-    margin-left: 5px;
+    margin-left: 10px;
     width: 6.5rem;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
 
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
+    font-family: 'Nunito Sans', sans-serif;
 
-    border: 1px solid lightgrey;
+    border: 0px solid lightgrey;
     border-radius: 5px;
-    background-color: #4C4C6D;
+    background-color: #5f5fd4;
     color: white
 }
 
 .btn:hover {
-    background-color: #3f3f66;
+    background-color: #1818cf;
     color: white;
-    outline: none;
+    outline: 0px solid grey;
     border: none;
 }
 
 .btn:focus {
-    background-color: #545B77;
+    background-color: #2e3a68;
+    color: white;
+    outline: none;
+    border: none;
+    box-shadow: rgba(60, 64, 67, .3) 0 5px 5px 0, rgba(60, 64, 67, .15) 0 10px 8px 3px;
+
+}
+
+.gotoBtn {
+    margin-left: 10px;
+    /* margin-right: 10px; */
+    width: 6.5rem;
+    padding-top: 6px;
+    padding-bottom: 6px;
+
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Nunito Sans', sans-serif;
+
+    border: 0px solid lightgrey;
+    border-radius: 5px;
+    background-color: #359684;
+    color: white
+}
+
+.gotoBtn:hover {
+    background-color: #24675b;
+    color: white;
+    outline: 0px solid grey;
+    border: none;
+}
+
+.gotoBtn:focus {
+    background-color: #2e3a68;
     color: white;
     outline: none;
     border: none;
@@ -104,14 +158,22 @@
 }
 
 .gotoContainer {
-    margin-top: 15px;
+    /* margin-top: 15px; */
+    width: 68%;
 }
 
 .input {
     width: 3rem;
-    height: 2.4rem;
-    font-size: 16px;
+    /* height: 2.4rem; */
+    padding: 5px 0px;
+    padding-left: 10px;
+    margin-left: 10px;
+
+    font-size: 15px;
     text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+
     border-radius: 5px;
     outline: none;
     border: 1px solid lightgrey;
@@ -121,4 +183,19 @@
 
     outline: none;
     /* border: none; */
+}
+
+.dropPageContents {
+    margin-left: 10px;
+    width: 7rem;
+    padding: 5px;
+
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+
 }

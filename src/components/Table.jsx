@@ -62,14 +62,18 @@ function Table() {
         state,
         gotoPage,
         pageCount,
+        setPageSize,
         prepareRow
     } = tableInstance
-    const { pageIndex } = state
+
+    const { pageIndex, pageSize } = state
 
 
     return (
         <div>
-            <div style={{ height: '65vh', overflow: 'auto' }}>
+            <div
+            // style={{ height: '65vh', overflow: 'auto' }}
+            >
                 <table {...getTableProps()} className={styles.table}>
                     <thead>
                         {
@@ -105,10 +109,10 @@ function Table() {
             <div className={styles.paginationContainer}>
                 <div className={styles.paginationUpper}>
 
-                    <div style={{ width: '75%' }}>
-                        <span>
+                    <div style={{ width: '68%', display: 'flex', 'justifyContent': 'center', alignItems: 'center' }}>
+                        <span className={styles.paginationInfo}>
                             Page{' '}
-                            <strong>
+                            <strong >
                                 {pageIndex + 1} of {pageOptions.length}
                             </strong>{' '}
                         </span>
@@ -116,22 +120,64 @@ function Table() {
                             onClick={() => previousPage()}
                             disabled={!canPreviousPage}
                             className={styles.btn}
+
+                            style={{
+                                backgroundColor: canPreviousPage ? null : 'lightgrey',
+                                color: canPreviousPage ? 'white' : 'black'
+                            }}
                         >
                             Previous
                         </button>
+                        <input
+                            type='number'
+                            min={1}
+                            max={pageOptions.length}
+                            // value={pageIndex + 1}
+                            defaultValue={pageIndex + 1}
+                            onChange={e => {
+                                const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
+                                setPageNumber(pageNumber)
+                            }}
+                            className={styles.input}
+                        />
 
+                        <button
+                            onClick={() => gotoPage(pageNumber)}
+                            className={styles.gotoBtn}
+                        >
+                            Goto
+                        </button>
                         <button
                             onClick={() => nextPage()}
                             disabled={!canNextPage}
                             className={styles.btn}
+                            style={{
+                                backgroundColor: canNextPage ? null : 'lightgrey',
+                                color: canNextPage ? 'white' : 'black'
+                            }}
                         >
                             Next
                         </button>
+
+                        <select
+                            className={styles.dropPageContents}
+                            value={pageSize}
+                            onChange={e => setPageSize(Number(e.target.value))}
+                        >
+                            {
+                                [10, 15, 20].map(pageSize => (
+                                    <option key={pageSize} value={pageSize}>
+                                        Show {pageSize}
+                                    </option>
+                                ))
+                            }
+                        </select>
                     </div>
 
-                    <div>
+                    <div >
                         <SaveData leadData={leadData} />
                         <ExportCSV data={leadData} />
+                        <NewLead setLeadData={setLeadData} />
                     </div>
 
 
@@ -139,7 +185,7 @@ function Table() {
 
 
                 <div className={styles.gotoContainer}>
-                    <input
+                    {/* <input
                         type='number'
                         // value={pageIndex + 1}
                         defaultValue={pageIndex + 1}
@@ -155,16 +201,12 @@ function Table() {
                         className={styles.btn}
                     >
                         Goto
-                    </button>
+                    </button> */}
                 </div>
             </div>
-            <div className={styles.btnContainer}>
-                <SaveData leadData={leadData} />
-                <ExportCSV data={leadData} />
 
-            </div>
 
-            <NewLead setLeadData={setLeadData} />
+
         </div>
     )
 }

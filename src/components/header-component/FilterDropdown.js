@@ -5,13 +5,15 @@ import styles from './filterDropdown.module.css'
 function FilterDrop({ column, optionData, style }) {
     const { setFilter, preFilteredRows, id } = column
 
-    const options = useMemo(() => {
-        const values = new Set()
-        preFilteredRows.forEach((row) => {
-            values.add(row.values[id])
-        });
-        return Array.from(values)
-    }, [id, preFilteredRows])
+    console.log('option', optionData);
+    // const options = useMemo(() => {
+    //     const values = new Set()
+    //     preFilteredRows.forEach((row) => {
+    //         values.add(row.values[id])
+    //     });
+    //     return Array.from(values)
+    // }, [id, preFilteredRows])
+    // { console.log('options', options) }
 
     const handleFilterValue = (e) => {
         setFilter(e.target.value)
@@ -25,8 +27,10 @@ function FilterDrop({ column, optionData, style }) {
                 style={style}
             >
                 <option value={''}>All</option>
+
                 {
-                    options.map((item, idx) => (
+
+                    optionData.map((item, idx) => (
                         <option key={idx} value={item}>{item}</option>
                     ))
                 }
