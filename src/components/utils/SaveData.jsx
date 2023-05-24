@@ -18,11 +18,10 @@ function SaveData({ leadData }) {
     }
 
     return (
-        <div>
-            <button className={styles.btn} onClick={handleOnClick}>
-                Speichern
-            </button>
-        </div>
+        <button className={styles.btn} onClick={handleOnClick}>
+            Speichern
+        </button>
+
     )
 }
 

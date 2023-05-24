@@ -26,14 +26,12 @@ function ExportCSV({ data }) {
     }
 
     return (
-        <div>
-            <button
-                onClick={() => exportToCSV(data)}
-                className={styles.btn}
-            >
-                EXPORT CSV
-            </button>
-        </div>
+        <button
+            onClick={() => exportToCSV(data)}
+            className={styles.btn}
+        >
+            EXPORT CSV
+        </button>
     )
 }
 

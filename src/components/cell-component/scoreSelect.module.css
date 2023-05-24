@@ -1,0 +1,10 @@
+.container {
+    border-radius: 10px;
+    height: 22px;
+    width: 8rem;
+    outline: none;
+    margin-top: 5px;
+    font-size: 14;
+    padding-left: 10px;
+    text-align: center
+}

@@ -6,8 +6,9 @@
 }
 
 .table {
+    margin-top: 5px;
     /* font-family: Arial, Helvetica, sans-serif; */
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
     border-collapse: collapse;
     width: 100%;
 
@@ -17,13 +18,14 @@
 .th {
     border: 1px solid #ddd;
     padding: 8px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     text-align: center;
-    background-color: #4CAF50;
+    background-color: #36304a;
+    /* background-color: #333333; */
     color: white;
-    font-size: large;
-    /* font-size: 'large'; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
 }
 
 .tbody {
@@ -41,6 +43,11 @@
 .tr {
     background-color: white;
     color: black;
+    border: 1px solid #ddd;
+}
+
+.tr:nth-child(even) {
+    background-color: #dddbdb;
 }
 
 .tr:hover {
@@ -56,4 +63,62 @@
 .paginationContainer {
     display: flex;
     flex-direction: column;
+    margin-top: 15px;
+}
+
+.paginationUpper {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn {
+    /* padding: 10px 20px; */
+    margin-left: 5px;
+    width: 6.5rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    background-color: #4C4C6D;
+    color: white
+}
+
+.btn:hover {
+    background-color: #3f3f66;
+    color: white;
+    outline: none;
+    border: none;
+}
+
+.btn:focus {
+    background-color: #545B77;
+    color: white;
+    outline: none;
+    border: none;
+    box-shadow: rgba(60, 64, 67, .3) 0 5px 5px 0, rgba(60, 64, 67, .15) 0 10px 8px 3px;
+
+}
+
+.gotoContainer {
+    margin-top: 15px;
+}
+
+.input {
+    width: 3rem;
+    height: 2.4rem;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid lightgrey;
+}
+
+.input:focus {
+
+    outline: none;
+    /* border: none; */
 }

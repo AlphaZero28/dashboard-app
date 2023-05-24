@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react'
+import styles from './filterDropdown.module.css'
 
-function FilterDrop({ column, optionData }) {
+
+function FilterDrop({ column, optionData, style }) {
     const { setFilter, preFilteredRows, id } = column
 
     const options = useMemo(() => {
@@ -15,8 +17,13 @@ function FilterDrop({ column, optionData }) {
         setFilter(e.target.value)
     }
     return (
-        <span>
-            <select name='All' onChange={handleFilterValue}>
+        <span >
+            <select
+                name='All'
+                onChange={handleFilterValue}
+                className={styles.container}
+                style={style}
+            >
                 <option value={''}>All</option>
                 {
                     options.map((item, idx) => (
@@ -24,10 +31,6 @@ function FilterDrop({ column, optionData }) {
                     ))
                 }
             </select>
-            {/* <input
-                value={filterValue || ''}
-                onChange={(e) => setFilter(e.target.value)}
-            /> */}
         </span>
     )
 }

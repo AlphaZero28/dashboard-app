@@ -6,8 +6,8 @@ import { COLUMNS } from './Columns'
 import ExportCSV from './utils/ExportCSV'
 import NewLead from './utils/NewLead'
 import SaveData from './utils/SaveData'
-import DateFilter from './header-component/DateFilter'
-// import { DateRangeColumnFilter, DefaultColumnFilter, Filter } from './header-component/DateFilterRange'
+
+
 
 function Table() {
     const [leadData, setLeadData] = useState([])
@@ -44,7 +44,6 @@ function Table() {
         {
             columns,
             data,
-            // defaultColumn: { Filter: DefaultColumnFilter }
         },
         useFilters,
         usePagination
@@ -70,7 +69,7 @@ function Table() {
 
     return (
         <div>
-            <div style={{ height: '60vh', overflow: 'auto' }}>
+            <div style={{ height: '65vh', overflow: 'auto' }}>
                 <table {...getTableProps()} className={styles.table}>
                     <thead>
                         {
@@ -104,30 +103,42 @@ function Table() {
                 </table>
             </div>
             <div className={styles.paginationContainer}>
-                <div>
-                    <span>
-                        Page{' '}
-                        <strong>
-                            {pageIndex + 1} of {pageOptions.length}
-                        </strong>{' '}
-                    </span>
-                    <button
-                        onClick={() => previousPage()}
-                        disabled={!canPreviousPage}
-                    >
-                        Prev
-                    </button>
+                <div className={styles.paginationUpper}>
 
-                    <button
-                        onClick={() => nextPage()}
-                        disabled={!canNextPage}
-                    >
-                        Next
-                    </button>
+                    <div style={{ width: '75%' }}>
+                        <span>
+                            Page{' '}
+                            <strong>
+                                {pageIndex + 1} of {pageOptions.length}
+                            </strong>{' '}
+                        </span>
+                        <button
+                            onClick={() => previousPage()}
+                            disabled={!canPreviousPage}
+                            className={styles.btn}
+                        >
+                            Previous
+                        </button>
+
+                        <button
+                            onClick={() => nextPage()}
+                            disabled={!canNextPage}
+                            className={styles.btn}
+                        >
+                            Next
+                        </button>
+                    </div>
+
+                    <div>
+                        <SaveData leadData={leadData} />
+                        <ExportCSV data={leadData} />
+                    </div>
+
+
                 </div>
 
 
-                <div>
+                <div className={styles.gotoContainer}>
                     <input
                         type='number'
                         // value={pageIndex + 1}
@@ -136,10 +147,13 @@ function Table() {
                             const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
                             setPageNumber(pageNumber)
                         }}
-                        style={{ width: '40px' }}
+                        className={styles.input}
                     />
 
-                    <button onClick={() => gotoPage(pageNumber)}>
+                    <button
+                        onClick={() => gotoPage(pageNumber)}
+                        className={styles.btn}
+                    >
                         Goto
                     </button>
                 </div>

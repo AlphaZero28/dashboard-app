@@ -1,9 +1,10 @@
 import React from "react";
+import styles from './dateFilter.module.css'
+
 
 function DateRangeColumnFilter({ column }) {
 
     const { filterValue = [], preFilteredRows, setFilter, id } = column
-
 
     let min = null;
     let max = null;
@@ -18,20 +19,13 @@ function DateRangeColumnFilter({ column }) {
         });
     }
 
-    // console.log("min:", min, "max:", max);
-
-
-
-
-
     return (
         <div
-            style={{
-                display: "flex"
-            }}
+            className={styles.container}
         >
             {min && (
                 <input
+                    className={styles.input}
                     value={filterValue[0] || ""}
                     type="date"
                     min={min.toISOString().slice(0, 10)}
@@ -46,6 +40,7 @@ function DateRangeColumnFilter({ column }) {
             {
                 max && (
                     <input
+                        className={styles.input}
                         value={filterValue[1] || ""}
                         type="date"
                         max={max.toISOString().slice(0, 10)}
@@ -56,7 +51,7 @@ function DateRangeColumnFilter({ column }) {
 
                             const formattedDate = selectedDate.toISOString().slice(0, 10);
 
-                            setFilter((old = []) => [old[0], formattedDate ? (formattedDate) : undefined]);
+                            setFilter((old = []) => [old[0], val ? (val) : undefined]);
                         }}
                         style={{
                             marginLeft: "0.5rem"
