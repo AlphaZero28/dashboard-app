@@ -47,89 +47,91 @@ function Modal({ openModal, setOpenModal }) {
     }
 
     return (
-        <div className={styles.modalBackground}>
-            <div className={styles.modalContainer}>
-                <div className={styles.modalCloseBtn}>
-                    <button
-                        onClick={() => setOpenModal(false)}
-                        className={styles.closeBtn}
+        <div className={styles.modal}>
+            <div className={styles.modalBackground}>
+                <div className={styles.modalContainer}>
+                    <div className={styles.modalCloseBtn}>
+                        <button
+                            onClick={() => setOpenModal(false)}
+                            className={styles.closeBtn}
+                        >
+                            X
+                        </button>
+                    </div>
+
+                    <div className={styles.modalTitle}>
+                        <h2 className={styles.title}>Neuer Lead</h2>
+                    </div>
+                    <form
+                        onSubmit={handleSubmit}
+                        className={styles.body}
                     >
-                        X
-                    </button>
+
+                        <TextInput
+                            title={'Name'}
+                            placeholder={'Mikhail Tal'}
+                            value={name}
+                            setValue={setName}
+                        />
+
+                        <TextInput
+                            title={'Telefon'}
+                            placeholder={'+45-5686446'}
+                            value={telefon}
+                            setValue={setTelefon}
+                        />
+
+                        <TextInput
+                            title={'E-Mail'}
+                            placeholder={'tal@gmail.com'}
+                            type={'email'}
+                            value={email}
+                            setValue={setEmail}
+                        />
+
+                        <DropdownInput
+                            title={'Produkt'}
+                            options={ProduktOption}
+                            value={produkt}
+                            setValue={setProdukt}
+                        />
+                        <DropdownInput
+                            title={'Status'}
+                            options={StatusOption}
+                            value={status}
+                            setValue={setStatus}
+                        />
+                        <DropdownInput
+                            title={'Score'}
+                            options={ScoreOption}
+                            value={score}
+                            setValue={setScore}
+                        />
+
+                        <TextInput
+                            title={'Quelle'}
+                            placeholder={'your comment...'}
+                            type={'text'}
+                            value={quelle}
+                            setValue={setQuelle}
+                        />
+                        <TextInput
+                            title={'Date'}
+                            type={'date'}
+                            value={date}
+                            setValue={setDate}
+                        />
+
+                        <button
+                            className={styles.submitBtn}
+                            type='submit'
+                        >
+                            Neuen Lead Generieren
+                        </button>
+                    </form>
                 </div>
 
-                <div className={styles.modalTitle}>
-                    <h2 className={styles.title}>Neuer Lead</h2>
-                </div>
-                <form
-                    onSubmit={handleSubmit}
-                    className={styles.body}
-                >
-
-                    <TextInput
-                        title={'Name'}
-                        placeholder={'Mikhail Tal'}
-                        value={name}
-                        setValue={setName}
-                    />
-
-                    <TextInput
-                        title={'Telefon'}
-                        placeholder={'+45-5686446'}
-                        value={telefon}
-                        setValue={setTelefon}
-                    />
-
-                    <TextInput
-                        title={'E-Mail'}
-                        placeholder={'tal@gmail.com'}
-                        type={'email'}
-                        value={email}
-                        setValue={setEmail}
-                    />
-
-                    <DropdownInput
-                        title={'Produkt'}
-                        options={ProduktOption}
-                        value={produkt}
-                        setValue={setProdukt}
-                    />
-                    <DropdownInput
-                        title={'Status'}
-                        options={StatusOption}
-                        value={status}
-                        setValue={setStatus}
-                    />
-                    <DropdownInput
-                        title={'Score'}
-                        options={ScoreOption}
-                        value={score}
-                        setValue={setScore}
-                    />
-
-                    <TextInput
-                        title={'Quelle'}
-                        placeholder={'your comment...'}
-                        type={'text'}
-                        value={quelle}
-                        setValue={setQuelle}
-                    />
-                    <TextInput
-                        title={'Date'}
-                        type={'date'}
-                        value={date}
-                        setValue={setDate}
-                    />
-
-                    <button
-                        className={styles.submitBtn}
-                        type='submit'
-                    >
-                        Neuen Lead Generieren
-                    </button>
-                </form>
             </div>
-
         </div>
 
     )
