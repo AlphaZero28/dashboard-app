@@ -1,26 +1,16 @@
 import React, { useEffect, useState, useMemo } from 'react'
 import styles from './table.module.css'
 import { LeadAPI } from '../api/LeadAPI'
-import { useTable, useFilters } from 'react-table'
+import { useTable, useFilters, usePagination } from 'react-table'
 import { COLUMNS } from './Columns'
 import ExportCSV from './utils/ExportCSV'
 import NewLead from './utils/NewLead'
 import SaveData from './utils/SaveData'
 
 function Table() {
-    const [leadData, setLeadData] = useState([
-        // {
-        //   datum: '2023-05-25T00:00:00Z',
-        //   email: 'ra@gmail.com',
-        //   id: 1,
-        //   name: 'rag',
-        //   produkt: 'Warmepumpe',
-        //   quelle: 'hello',
-        //   score: 'A',
-        //   status: 'LEAD-NEU',
-        //   telefon: '0188'
-        // }
-    ])
+    const [leadData, setLeadData] = useState([])
+
+    const [pageNumber, setPageNumber] = useState(1)
 
     const onResponse = res => {
         setLeadData(res.data)
@@ -52,15 +42,31 @@ function Table() {
             columns,
             data
         },
-        useFilters
+        useFilters,
+        usePagination
     )
 
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-        tableInstance
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        page,
+        nextPage,
+        previousPage,
+        canNextPage,
+        canPreviousPage,
+        pageOptions,
+        state,
+        gotoPage,
+        pageCount,
+        prepareRow
+    } = tableInstance
+    const { pageIndex } = state
+
 
     return (
         <div>
-            <div style={{ height: '40vh', overflow: 'auto' }}>
+            <div style={{ height: '60vh', overflow: 'auto' }}>
                 <table {...getTableProps()} className={styles.table}>
                     <thead>
                         {
@@ -78,7 +84,7 @@ function Table() {
                             ))}
                     </thead>
                     <tbody {...getTableBodyProps()} className={styles.tbody}>
-                        {rows.map(row => {
+                        {page.map(row => {
                             prepareRow(row)
                             return (
                                 <tr {...row.getRowProps()} className={styles.tr}>
@@ -92,6 +98,47 @@ function Table() {
                         })}
                     </tbody>
                 </table>
+            </div>
+            <div className={styles.paginationContainer}>
+                <div>
+                    <span>
+                        Page{' '}
+                        <strong>
+                            {pageIndex + 1} of {pageOptions.length}
+                        </strong>{' '}
+                    </span>
+                    <button
+                        onClick={() => previousPage()}
+                        disabled={!canPreviousPage}
+                    >
+                        Prev
+                    </button>
+
+                    <button
+                        onClick={() => nextPage()}
+                        disabled={!canNextPage}
+                    >
+                        Next
+                    </button>
+                </div>
+
+
+                <div>
+                    <input
+                        type='number'
+                        // value={pageIndex + 1}
+                        defaultValue={pageIndex + 1}
+                        onChange={e => {
+                            const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
+                            setPageNumber(pageNumber)
+                        }}
+                        style={{ width: '40px' }}
+                    />
+
+                    <button onClick={() => gotoPage(pageNumber)}>
+                        Goto
+                    </button>
+                </div>
             </div>
             <div className={styles.btnContainer}>
                 <SaveData leadData={leadData} />
