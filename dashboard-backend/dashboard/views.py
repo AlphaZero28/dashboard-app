@@ -47,11 +47,18 @@ def get_list(request):
 @api_view(['GET', 'POST'])
 def new_lead(request):
     print(request.data)
+    if 'datum' in request.data:
+        if request.data['datum'] == '':
+            request.data['datum'] = None
     serializer = DashboardSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save()
+        instance = serializer.save()
         print("entry saved")
-    return Response({"msg": "successful"}, status=status.HTTP_200_OK)
+        # instance_serializer = DashboardSerializer(instance, data={})
+        # if instance_serializer.is_valid():
+            # return Response({"msg": "successful", 'id': instance.id}, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET', 'POST'])

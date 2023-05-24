@@ -3,14 +3,14 @@ from django.db import models
 
 # Create your models here.
 class Dashboard(models.Model):
-    name = models.TextField(null=True)
-    telefon = models.TextField(null=True)
-    email = models.EmailField(null=True)
+    name = models.TextField(null=True, blank=True)
+    telefon = models.TextField(null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
     produkt = models.TextField(null=True)
     status = models.TextField(null=True)
     score = models.TextField(null=True)
-    quelle = models.TextField(null=True)
-    datum = models.DateTimeField(null=True)
+    quelle = models.TextField(null=True, blank=True)
+    datum = models.DateTimeField(null=True, blank=True)
     # first_name = models.CharField(max_length=30)
     # last_name = models.CharField(max_length=30)
 #     mac_address = models.TextField()
