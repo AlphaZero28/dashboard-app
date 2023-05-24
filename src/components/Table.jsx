@@ -6,6 +6,8 @@ import { COLUMNS } from './Columns'
 import ExportCSV from './utils/ExportCSV'
 import NewLead from './utils/NewLead'
 import SaveData from './utils/SaveData'
+import DateFilter from './header-component/DateFilter'
+// import { DateRangeColumnFilter, DefaultColumnFilter, Filter } from './header-component/DateFilterRange'
 
 function Table() {
     const [leadData, setLeadData] = useState([])
@@ -30,6 +32,7 @@ function Table() {
         setLeadData(updatedData)
     }
 
+
     const columns = useMemo(() =>
         COLUMNS(
             handleOnChange,
@@ -40,7 +43,8 @@ function Table() {
     const tableInstance = useTable(
         {
             columns,
-            data
+            data,
+            // defaultColumn: { Filter: DefaultColumnFilter }
         },
         useFilters,
         usePagination

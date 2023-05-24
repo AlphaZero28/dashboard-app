@@ -1,10 +1,28 @@
 import QuelleFilter from "./header-component/QuelleFilter"
 import FilterDropdown from "./header-component/FilterDropdown"
 import DateFilter from "./header-component/DateFilter"
-import { format, parse } from "date-fns"
+import { format, parse, parseISO, isAfter, isBefore } from "date-fns"
 import ScoreSelect from "./cell-component/ScoreSelect"
 import { ScoreOption, StatusOption, ProduktOption } from "../config"
+// import DateFilterRange from "./header-component/DateFilterRange"
 
+import DateRangeColumnFilter from "./header-component/DateFilterRange"
+// dateBetweenFilterFn.autoRemove = val => !val;
+
+
+function dateBetweenFilterFn(rows, id, filterValues) {
+    let sd = new Date(filterValues[0]);
+    let ed = new Date(filterValues[1]);
+    // console.log(rows, id, filterValues)
+    return rows.filter(r => {
+        var time = new Date(r.values[id]);
+        // console.log(time, ed, sd)
+        if (filterValues.length === 0) return rows;
+        return (time >= sd && time <= ed);
+    });
+}
+
+dateBetweenFilterFn.autoRemove = val => !val;
 
 const filterTypes = {
     exactText: (rows, id, filterValue) => {
@@ -13,6 +31,18 @@ const filterTypes = {
         }
         return rows.filter((row) => row.values[id] === filterValue);
     },
+    dateBetween: dateBetweenFilterFn,   /*<- LIKE THIS*/
+    text: (rows, id, filterValue) => {
+        return rows.filter(row => {
+            const rowValue = row.values[id];
+            return rowValue !== undefined
+                ? String(rowValue)
+                    .toLowerCase()
+                    .startsWith(String(filterValue).toLowerCase())
+                : true;
+        });
+    }
+
 };
 
 export const COLUMNS = (handleOnChange, leadData) => [
@@ -128,19 +158,10 @@ export const COLUMNS = (handleOnChange, leadData) => [
     {
         Header: "Datum",
         accessor: 'datum',
-        // Cell: ({ val }) => {
-        //     let formattedDate = '';
-
-        //     try {
-        //         const dateObj = parse(val, "yyyy-MM-dd'T'HH:mm:ssX", new Date());
-        //         formattedDate = format(dateObj, 'dd/MM/yyyy');
-        //     } catch (error) {
-        //         // Handle error if parsing fails
-        //         console.log('Error parsing date:', error);
-        //     }
-
-        //     return formattedDate;
-        // },
-        Filter: DateFilter
+        Filter: DateRangeColumnFilter,
+        filter: dateBetweenFilterFn
+        // Filter: DateFilter
+        // filter: dateBetweenFilterFn
     }
+
 ]
