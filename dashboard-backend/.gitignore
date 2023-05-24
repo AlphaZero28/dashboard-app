@@ -1,0 +1,10 @@
+/.idea
+/venv
+
+/dashboard/templates
+
+**/__pycache__/
+**/**/__pycache__/
+
+dashboard_backend.zip
+db.sqlite3

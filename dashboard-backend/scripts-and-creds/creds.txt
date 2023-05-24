@@ -1,0 +1,10 @@
+=== VPS CREDS ===
+VPS ip address: 81.169.149.31
+user: root
+password: k96c7X851
+
+=== DB ===
+hostname: h3009473.stratoserver.net
+username: leads
+password: 0bb1~8sX5
+port 3306

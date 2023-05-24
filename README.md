@@ -1,3 +1,6 @@
-# Getting Started with Create React App
+# Dashboard App - [Client Shuvo]
+- Backened folder: *dashboard_backend*
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Notes
+- For production change url at: *src/api/url.js*
+- To use Django to server ReactJS app, move the ReactJS build directory elements: *dashboard_backend/dashboard/templates*

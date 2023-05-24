@@ -1,0 +1,15 @@
+[Unit]
+Description=Custom boot file to run at start
+After=network.target
+StartLimitIntervalSec=400
+
+[Service]
+ExecStart=bash /home/dashboard-backend/boot.sh
+Restart=always
+RestartSec=90
+User=root
+Group=root
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

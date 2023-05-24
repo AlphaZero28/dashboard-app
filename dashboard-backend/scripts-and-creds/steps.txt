@@ -1,0 +1,59 @@
+- language change at /etc/profile
+- created api subdomain (api.wizardly-swirles.81-169-149-31.plesk.page)
+- root director -> /home/dashboard-backend
+
+- removed plesk
+plesk installer --remove-everything
+/etc/init.d/apache2 stop
+
+sudo apt install unzip
+sudo apt install nginx
+sudo apt install ufw
+sudo ufw allow 8000
+
+sudo apt-get install python3-dev
+
+sudo apt install python3 python3-venv libaugeas0
+sudo python3 -m venv /opt/certbot/
+sudo /opt/certbot/bin/pip install --upgrade pip
+
+sudo /opt/certbot/bin/pip install certbot certbot-nginx
+sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
+
+# get hostname first (https://h3009473.stratoserver.net/)
+hostname
+sudo certbot --nginx
+
+# copy files and activate python env then
+pip install django gunicorn psycopg2-binary
+
+# test
+gunicorn --bind 0.0.0.0:8000 dashboard_backend.wsgi
+
+# create /etc/systemd/system/gunicorn.service file
+# create /etc/systemd/system/gunicorn.socket file
+
+# create /etc/nginx/sites-available/backend nginx file
+# add backend nginx file
+sudo ln -s /etc/nginx/sites-available/backend /etc/nginx/sites-enabled
+
+# start gunicorn
+sudo systemctl daemon-reload
+sudo systemctl start gunicorn.socket
+sudo systemctl enable gunicorn.socket
+
+sudo systemctl restart nginx
+
+# see nginx error
+sudo tail -F /var/log/nginx/error.log
+
+# create /home/dashboard-backend/boot.sh file
+# create /etc/systemd/system/boot.service file and enable
+
+
+#### SQL #####
+# login as user leads
+sudo mysql -u leads -h h3009473.stratoserver.net -p
+
+
+
