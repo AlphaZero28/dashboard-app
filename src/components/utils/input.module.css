@@ -1,5 +1,5 @@
 .textInput {
-    width: 14rem;
+    width: 16rem;
     padding: 8px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -7,29 +7,33 @@
     border-radius: 4px;
     box-sizing: border-box;
 
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .label {
     text-align: left;
     font-size: 15px;
     font-weight: 600;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .dropInput {
-    width: 14rem;
-    padding: 7px 20px;
+    width: 16rem;
+    padding: 7px 0px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
 
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 15px;
-    font-weight: 600;
+    /* font-weight: 600; */
     text-align: center;
+}
+
+.dropInput:focus {
+    outline: 2px solid black;
 }

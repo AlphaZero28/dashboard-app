@@ -13,10 +13,9 @@ function QuelleFilter({ column }) {
         marginTop: '5px',
         fontSize: '14',
         paddingLeft: '10px',
-
-
-        // border: '0px',
     }
+
+
     return (
         <span>
             <input style={styles}

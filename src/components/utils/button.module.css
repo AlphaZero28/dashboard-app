@@ -1,8 +1,8 @@
 .savebtn {
-    background-color: white;
+    background-color: #1b801f;
     border: 2px solid #1b801f;
     border-radius: 10px;
-    color: black;
+    color: white;
 
     padding: 10px 30px;
     text-align: center;
@@ -18,7 +18,7 @@
 }
 
 .savebtn:hover {
-    background-color: #1b801f;
+    background-color: #0e6e11;
     color: white;
     box-shadow: rgba(60, 64, 67, .3) 0 5px 5px 0, rgba(60, 64, 67, .15) 0 10px 8px 3px;
 }
@@ -31,10 +31,10 @@
 }
 
 .exportBtn {
-    background-color: white;
+    background-color: #227cdc;
     border: 2px solid #227cdc;
     border-radius: 10px;
-    color: black;
+    color: white;
 
     padding: 10px 20px;
     text-align: center;
@@ -50,7 +50,8 @@
 }
 
 .exportBtn:hover {
-    background-color: #227cdc;
+    background-color: #1a62af;
+    border: 2px solid #1a62af;
     color: white;
     box-shadow: rgba(60, 64, 67, .3) 0 5px 5px 0, rgba(60, 64, 67, .15) 0 10px 8px 3px;
 }

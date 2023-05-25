@@ -1,10 +1,8 @@
 .Btn {
-    /* background-color: #34495E; */
-    background-color: white;
-    border: 2px solid #34495E;
+    background-color: #3f5c79;
+    border: 2px solid #3f5c79;
     border-radius: 10px;
-    color: black;
-    /* width: 11rem; */
+    color: white;
 
     padding: 10px 20px;
     text-align: center;
@@ -12,15 +10,17 @@
 
     display: inline-block;
     font-size: 15px;
-    margin: 10px 2px;
+    margin: 10px 10px;
     cursor: pointer;
+    font-family: 'Roboto', sans-serif;
 
     box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
     transition: background-color 0.3s ease;
 }
 
 .Btn:hover {
-    background-color: #34495E;
+    background-color: #2a3f54;
+    border: 2px solid #2a3f54;
     color: white;
 }
 
@@ -28,6 +28,8 @@
     background-color: #34495E;
     color: white;
     outline: 2px solid #34495E;
+    box-shadow: rgba(60, 64, 67, .3) 0 5px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+
 
 }
 
@@ -41,31 +43,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* padding-top: 50px; */
-    /* overflow-y: auto; */
 }
 
 .modalContainer {
-    width: 500px;
+    width: 40vw;
     height: 95vh;
+    background-color: white;
 
     overflow-y: auto;
     padding: 5px 10px;
 
     border-radius: 12px;
-    background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
-
-    /* margin-bottom: 10px; */
-    /* padding-top: 10px; */
 }
 
 .modalCloseBtn {
     display: flex;
     justify-content: flex-end;
-    /* justify-content: ; */
 }
 
 .closeBtn {
@@ -73,29 +69,27 @@
     border: none;
     font-size: 20px;
     cursor: pointer;
+    font-family: 'Roboto', sans-serif;
 }
 
 .modalTitle {
     display: inline-block;
     text-align: center;
-    /* margin-top: 10px; */
 }
 
 .title {
     display: inline-block;
     text-align: center;
     margin-top: 10px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .body {
-    /* overflow-y: auto; */
     flex: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* font-size: 1rem; */
     text-align: center;
 }
 

@@ -52,7 +52,7 @@ const filterTypes = {
 
 };
 
-export const COLUMNS = (handleOnChange, leadData) => [
+export const COLUMNS = (handleOnChange, setFilteredData, leadData) => [
     {
         Header: 'Lead No.',
         accessor: 'id',
@@ -83,6 +83,7 @@ export const COLUMNS = (handleOnChange, leadData) => [
         Filter: ({ column }) => (
             <FilterDropdown
                 column={column}
+                setFilteredData={setFilteredData}
                 optionData={ProduktOption}
             />
         ),
@@ -93,6 +94,7 @@ export const COLUMNS = (handleOnChange, leadData) => [
                 optionData={ProduktOption}
                 value={row.values.produkt}
                 row={row}
+
                 onChange={(row, newVal) => {
                     const updatedData = leadData.map((item) => {
                         if (item.id === row.original.id) {
@@ -111,6 +113,7 @@ export const COLUMNS = (handleOnChange, leadData) => [
         accessor: 'status',
         Filter: ({ column }) => (
             <FilterDropdown
+                setFilteredData={setFilteredData}
                 column={column}
                 optionData={StatusOption}
             />
@@ -121,15 +124,15 @@ export const COLUMNS = (handleOnChange, leadData) => [
                 optionData={StatusOption}
                 value={row.values.status}
                 row={row}
-                onChange={(row, newVal) => {
-                    const updatedData = leadData.map((item) => {
-                        if (item.id === row.original.id) {
-                            return { ...item, status: newVal }
-                        }
-                        return item
-                    });
-                    handleOnChange(updatedData)
-                }}
+            // onChange={(row, newVal) => {
+            //     const updatedData = leadData.map((item) => {
+            //         if (item.id === row.original.id) {
+            //             return { ...item, status: newVal }
+            //         }
+            //         return item
+            //     });
+            //     handleOnChange(updatedData)
+            // }}
             />
         )
     },
@@ -139,8 +142,9 @@ export const COLUMNS = (handleOnChange, leadData) => [
         Filter: ({ column }) => (
             <FilterDropdown
                 style={{ width: '5rem' }}
+                setFilteredData={setFilteredData}
                 column={column}
-                optionData={StatusOption}
+                optionData={ScoreOption}
             />
         ),
         Cell: ({ row }) => (
@@ -149,15 +153,15 @@ export const COLUMNS = (handleOnChange, leadData) => [
                 optionData={ScoreOption}
                 value={row.values.score}
                 row={row}
-                onChange={(row, newVal) => {
-                    const updatedData = leadData.map((item) => {
-                        if (item.id === row.original.id) {
-                            return { ...item, score: newVal }
-                        }
-                        return item
-                    });
-                    handleOnChange(updatedData)
-                }}
+            // onChange={(row, newVal) => {
+            //     const updatedData = leadData.map((item) => {
+            //         if (item.id === row.original.id) {
+            //             return { ...item, score: newVal }
+            //         }
+            //         return item
+            //     });
+            //     handleOnChange(updatedData)
+            // }}
             />
         )
     },
@@ -172,7 +176,7 @@ export const COLUMNS = (handleOnChange, leadData) => [
         Filter: DateRangeColumnFilter,
         filter: dateBetweenFilterFn,
         Cell: ({ row }) => {
-            console.log('val', row);
+            // console.log('val', row);
             const date = new Date(row.values.datum)
 
             return <span>{date.toLocaleDateString(date)}</span>

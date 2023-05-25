@@ -2,13 +2,14 @@ import React from 'react'
 import styles from './button.module.css'
 import { saveAs } from 'file-saver'
 
-function ExportCSV({ data }) {
+function ExportCSV({ data, filteredData }) {
 
     const exportToCSV = data => {
         const csvData = convertToCSV(data);
         const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8' });
         saveAs(blob, 'lead_data.csv');
     }
+
     const convertToCSV = data => {
         const rows = [];
 
@@ -27,7 +28,7 @@ function ExportCSV({ data }) {
 
     return (
         <button
-            onClick={() => exportToCSV(data)}
+            onClick={() => exportToCSV(filteredData)}
             className={styles.exportBtn}
         >
             EXPORT CSV

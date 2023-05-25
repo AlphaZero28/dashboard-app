@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TextInput from './TextInput'
 import DropdownInput from './DropdownInput'
 import { LeadAPI } from '../../api/LeadAPI'
@@ -10,15 +10,15 @@ function Modal({ openModal, setOpenModal }) {
     const [name, setName] = useState('')
     const [telefon, setTelefon] = useState('')
     const [email, setEmail] = useState('')
-    const [produkt, setProdukt] = useState('Warmepumpe')
-    const [status, setStatus] = useState('LEAD-NEU')
-    const [score, setScore] = useState('A')
+    const [produkt, setProdukt] = useState('')
+    const [status, setStatus] = useState('')
+    const [score, setScore] = useState('')
     const [quelle, setQuelle] = useState('')
-    const [date, setDate] = useState('')
+    const [date, setDate] = useState(new Date().toISOString().split('T')[0])
 
     const onResponse = (res) => {
         // setLeadData(res.data)
-        console.log('res', res);
+        console.log('res', res.data);
     }
 
     const onError = (err) => {
@@ -43,11 +43,25 @@ function Modal({ openModal, setOpenModal }) {
 
         leadAPI.new_lead(onResponse, onError, data)
 
-        console.log('submitted', data);
+        // console.log('submitted', data);
     }
 
+    useEffect(() => {
+        const handleOverlayClick = (event) => {
+            if (event.target.id === 'modal-overlay') {
+                setOpenModal(false);
+            }
+        };
+
+        document.addEventListener('click', handleOverlayClick);
+
+        return () => {
+            document.removeEventListener('click', handleOverlayClick);
+        };
+    }, [openModal]);
+
     return (
-        <div className={styles.modalBackground}>
+        <div className={styles.modalBackground} id='modal-overlay'>
             <div className={styles.modalContainer}>
                 <div className={styles.modalCloseBtn}>
                     <button
@@ -67,7 +81,8 @@ function Modal({ openModal, setOpenModal }) {
                 >
 
                     <TextInput
-                        title={'Name'}
+                        required={true}
+                        title={'Vorname'}
                         placeholder={'Mikhail Tal'}
                         value={name}
                         setValue={setName}
@@ -75,14 +90,14 @@ function Modal({ openModal, setOpenModal }) {
 
                     <TextInput
                         title={'Telefon'}
-                        placeholder={'+45-5686446'}
+                        placeholder={'+4930 123 456 789'}
                         value={telefon}
                         setValue={setTelefon}
                     />
 
                     <TextInput
                         title={'E-Mail'}
-                        placeholder={'tal@gmail.com'}
+                        placeholder={'info@kunde.de'}
                         type={'email'}
                         value={email}
                         setValue={setEmail}
@@ -109,13 +124,14 @@ function Modal({ openModal, setOpenModal }) {
 
                     <TextInput
                         title={'Quelle'}
-                        placeholder={'your comment...'}
+                        placeholder={'Bitte Quelle angeben...'}
                         type={'text'}
                         value={quelle}
                         setValue={setQuelle}
                     />
                     <TextInput
-                        title={'Date'}
+                        style={{ textAlign: 'center' }}
+                        title={'Datum'}
                         type={'date'}
                         value={date}
                         setValue={setDate}

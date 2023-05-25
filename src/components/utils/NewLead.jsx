@@ -8,14 +8,7 @@ import Modal from './Modal'
 
 
 function NewLead({ setLeadData }) {
-
-
     const [openModal, setOpenModal] = useState(false)
-
-
-
-
-
     return (
 
         <>

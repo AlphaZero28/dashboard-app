@@ -1,35 +1,34 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import styles from './filterDropdown.module.css'
 
 
-function FilterDrop({ column, optionData, style }) {
-    const { setFilter, preFilteredRows, id } = column
+function FilterDrop({ column, optionData, style, setFilteredData }) {
+    const { setFilter, preFilteredRows, id, filteredRows } = column
 
-    console.log('option', optionData);
-    // const options = useMemo(() => {
-    //     const values = new Set()
-    //     preFilteredRows.forEach((row) => {
-    //         values.add(row.values[id])
-    //     });
-    //     return Array.from(values)
-    // }, [id, preFilteredRows])
-    // { console.log('options', options) }
+    useEffect(() => {
+        if (filteredRows && filteredRows.length > 0) {
+            const filteredItem = filteredRows.map((item) => item.original)
+
+            // console.log('filtered', filteredItem);
+            setFilteredData(filteredItem)
+        }
+    }, [filteredRows])
 
     const handleFilterValue = (e) => {
         setFilter(e.target.value)
+
     }
     return (
         <span >
             <select
-                name='All'
+                name='Alle'
                 onChange={handleFilterValue}
                 className={styles.container}
                 style={style}
             >
-                <option value={''}>All</option>
+                <option value={''}>Alle</option>
 
                 {
-
                     optionData.map((item, idx) => (
                         <option key={idx} value={item}>{item}</option>
                     ))

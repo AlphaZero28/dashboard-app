@@ -1,52 +1,36 @@
 .tableContainer {
-    /* display: grid;
-    grid-template-rows: 1fr 1fr;
-    /* Divide the container into two rows with equal height */
-
+    font-family: 'Roboto', sans-serif;
 }
 
 .table {
     margin-top: 5px;
     border-collapse: collapse;
     width: 100%;
-
 }
 
 .th {
     border: 1px solid #ddd;
-    padding: 10px 8px;
+    padding: 12px 8px;
 
     text-align: center;
-    background-color: #36304a;
-    /* background-color: #333333; */
+    background-color: #e4090e;
     color: white;
-    font-family: 'Montserrat', sans-serif;
-    /* font-family: 'Merriweather', serif; */
-    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
-}
 
-.tbody {
-    /* height: '30%';
-    overflow: scroll; */
+    vertical-align: top;
 }
 
 .td {
     border: 1px solid lightgrey;
     padding: 8px;
     font-size: 14px;
-
-    /* font-family: 'Nunito Sans', sans-serif; */
-    /* font-family: 'Merriweather', serif; */
-    /* font-family: 'Lato', sans-serif; */
     font-family: 'Roboto', sans-serif;
-
 }
 
 .tr {
     background-color: white;
     color: black;
-    /* border: 1px solid #812a2a; */
 }
 
 .tr:nth-child(even) {
@@ -77,8 +61,7 @@
 
     text-align: center;
     font-size: 15px;
-    font-weight: 600;
-    /* font-family: 'Nunito Sans', sans-serif; */
+    font-family: 'Roboto', sans-serif;
 }
 
 .paginationUpper {
@@ -99,12 +82,11 @@
     padding-bottom: 6px;
 
     font-size: 15px;
-    font-weight: 600;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 
     border: 0px solid lightgrey;
     border-radius: 5px;
-    background-color: #5f5fd4;
+    background-color: #4242ec;
     color: white
 }
 
@@ -116,7 +98,7 @@
 }
 
 .btn:focus {
-    background-color: #2e3a68;
+    background-color: #1818cf;
     color: white;
     outline: none;
     border: none;
@@ -132,17 +114,16 @@
     padding-bottom: 6px;
 
     font-size: 15px;
-    font-weight: 600;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 
     border: 0px solid lightgrey;
     border-radius: 5px;
-    background-color: #359684;
+    background-color: #45a694;
     color: white
 }
 
 .gotoBtn:hover {
-    background-color: #24675b;
+    background-color: #1f8270;
     color: white;
     outline: 0px solid grey;
     border: none;
@@ -171,8 +152,7 @@
 
     font-size: 15px;
     text-align: center;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
 
     border-radius: 5px;
     outline: none;
@@ -180,22 +160,19 @@
 }
 
 .input:focus {
-
     outline: none;
-    /* border: none; */
 }
 
 .dropPageContents {
     margin-left: 10px;
-    width: 7rem;
-    padding: 5px;
+    width: 10rem;
+    padding: 4px;
 
     border-radius: 5px;
     border: 1px solid lightgrey;
 
     text-align: center;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 15px;
-    font-weight: 600;
 
 }

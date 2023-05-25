@@ -14,6 +14,7 @@ function DropdownInput({ title, options, value, setValue }) {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
             >
+                <option value={''}>-- Wählen --</option>
                 {
                     options.map((item, idx) => (
                         <option value={item} key={idx}>

@@ -11,12 +11,15 @@ import SaveData from './utils/SaveData'
 
 function Table() {
     const [leadData, setLeadData] = useState([])
+    const [updatedData, setUpdatedData] = useState([])
+    const [filteredData, setFilteredData] = useState([]);
 
     const [pageNumber, setPageNumber] = useState(1)
 
     const onResponse = res => {
         setLeadData(res.data)
-        console.log(res.data)
+        setUpdatedData(res.data)
+        // console.log(res.data)
     }
     const onError = err => {
         console.log(err)
@@ -29,13 +32,26 @@ function Table() {
 
     const handleOnChange = (updatedData) => {
         console.log('updated', updatedData);
+        // setUpdatedData(updatedData)
         setLeadData(updatedData)
     }
+
+    const handleCellChange = (row, newVal) => {
+        const updatedData = leadData.map((item) => {
+            if (item.id === row.original.id) {
+                return { ...item, score: newVal };
+            }
+            return item;
+        });
+        // handleOnChange(updatedData);
+        setLeadData(updatedData)
+    };
 
 
     const columns = useMemo(() =>
         COLUMNS(
             handleOnChange,
+            setFilteredData,
             leadData),
         [leadData])
 
@@ -75,7 +91,7 @@ function Table() {
             // style={{ height: '65vh', overflow: 'auto' }}
             >
                 <table {...getTableProps()} className={styles.table}>
-                    <thead>
+                    <thead >
                         {
                             headerGroups.map(headerGroup => (
                                 <tr {...headerGroup.getHeaderGroupProps()} className={styles.tr}>
@@ -111,9 +127,9 @@ function Table() {
 
                     <div style={{ width: '68%', display: 'flex', 'justifyContent': 'center', alignItems: 'center' }}>
                         <span className={styles.paginationInfo}>
-                            Page{' '}
+                            Seite{' '}
                             <strong >
-                                {pageIndex + 1} of {pageOptions.length}
+                                {pageIndex + 1} von {pageOptions.length}
                             </strong>{' '}
                         </span>
                         <button
@@ -126,7 +142,19 @@ function Table() {
                                 color: canPreviousPage ? 'white' : 'black'
                             }}
                         >
-                            Previous
+                            Zurück
+                        </button>
+
+                        <button
+                            onClick={() => nextPage()}
+                            disabled={!canNextPage}
+                            className={styles.btn}
+                            style={{
+                                backgroundColor: canNextPage ? null : 'lightgrey',
+                                color: canNextPage ? 'white' : 'black'
+                            }}
+                        >
+                            Weiter
                         </button>
                         <input
                             type='number'
@@ -140,24 +168,13 @@ function Table() {
                             }}
                             className={styles.input}
                         />
-
                         <button
                             onClick={() => gotoPage(pageNumber)}
                             className={styles.gotoBtn}
                         >
-                            Goto
+                            Zur Seite
                         </button>
-                        <button
-                            onClick={() => nextPage()}
-                            disabled={!canNextPage}
-                            className={styles.btn}
-                            style={{
-                                backgroundColor: canNextPage ? null : 'lightgrey',
-                                color: canNextPage ? 'white' : 'black'
-                            }}
-                        >
-                            Next
-                        </button>
+
 
                         <select
                             className={styles.dropPageContents}
@@ -167,7 +184,7 @@ function Table() {
                             {
                                 [10, 15, 20].map(pageSize => (
                                     <option key={pageSize} value={pageSize}>
-                                        Show {pageSize}
+                                        Zeige {pageSize} Einträge
                                     </option>
                                 ))
                             }
@@ -175,33 +192,12 @@ function Table() {
                     </div>
 
                     <div >
-                        <SaveData leadData={leadData} />
-                        <ExportCSV data={leadData} />
                         <NewLead setLeadData={setLeadData} />
+                        <ExportCSV data={leadData} filteredData={filteredData} />
+                        <SaveData leadData={updatedData} />
                     </div>
 
 
-                </div>
-
-
-                <div className={styles.gotoContainer}>
-                    {/* <input
-                        type='number'
-                        // value={pageIndex + 1}
-                        defaultValue={pageIndex + 1}
-                        onChange={e => {
-                            const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
-                            setPageNumber(pageNumber)
-                        }}
-                        className={styles.input}
-                    />
-
-                    <button
-                        onClick={() => gotoPage(pageNumber)}
-                        className={styles.btn}
-                    >
-                        Goto
-                    </button> */}
                 </div>
             </div>
 
