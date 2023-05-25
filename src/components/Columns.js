@@ -124,15 +124,15 @@ export const COLUMNS = (handleOnChange, setFilteredData, leadData) => [
                 optionData={StatusOption}
                 value={row.values.status}
                 row={row}
-            // onChange={(row, newVal) => {
-            //     const updatedData = leadData.map((item) => {
-            //         if (item.id === row.original.id) {
-            //             return { ...item, status: newVal }
-            //         }
-            //         return item
-            //     });
-            //     handleOnChange(updatedData)
-            // }}
+                onChange={(row, newVal) => {
+                    const updatedData = leadData.map((item) => {
+                        if (item.id === row.original.id) {
+                            return { ...item, status: newVal }
+                        }
+                        return item
+                    });
+                    handleOnChange(updatedData)
+                }}
             />
         )
     },
@@ -153,15 +153,15 @@ export const COLUMNS = (handleOnChange, setFilteredData, leadData) => [
                 optionData={ScoreOption}
                 value={row.values.score}
                 row={row}
-            // onChange={(row, newVal) => {
-            //     const updatedData = leadData.map((item) => {
-            //         if (item.id === row.original.id) {
-            //             return { ...item, score: newVal }
-            //         }
-            //         return item
-            //     });
-            //     handleOnChange(updatedData)
-            // }}
+                onChange={(row, newVal) => {
+                    const updatedData = leadData.map((item) => {
+                        if (item.id === row.original.id) {
+                            return { ...item, score: newVal }
+                        }
+                        return item
+                    });
+                    handleOnChange(updatedData)
+                }}
             />
         )
     },

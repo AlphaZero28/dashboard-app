@@ -15,6 +15,7 @@ function Modal({ openModal, setOpenModal }) {
     const [score, setScore] = useState('')
     const [quelle, setQuelle] = useState('')
     const [date, setDate] = useState(new Date().toISOString().split('T')[0])
+    // const [date, setDate] = useState('')
 
     const onResponse = (res) => {
         // setLeadData(res.data)
@@ -43,6 +44,13 @@ function Modal({ openModal, setOpenModal }) {
 
         leadAPI.new_lead(onResponse, onError, data)
 
+        const timer = setTimeout(() => {
+            setOpenModal(false);
+        }, 1000);
+
+        return () => {
+            clearTimeout(timer);
+        };
         // console.log('submitted', data);
     }
 
@@ -81,7 +89,8 @@ function Modal({ openModal, setOpenModal }) {
                 >
 
                     <TextInput
-                        title={'Name'}
+                        required={true}
+                        title={'Vorname'}
                         placeholder={'Mikhail Tal'}
                         value={name}
                         setValue={setName}
@@ -89,14 +98,15 @@ function Modal({ openModal, setOpenModal }) {
 
                     <TextInput
                         title={'Telefon'}
-                        placeholder={'+45-5686446'}
+                        placeholder={'+4930 123 456 789'}
                         value={telefon}
                         setValue={setTelefon}
                     />
 
                     <TextInput
+                        required={true}
                         title={'E-Mail'}
-                        placeholder={'tal@gmail.com'}
+                        placeholder={'info@kunde.de'}
                         type={'email'}
                         value={email}
                         setValue={setEmail}
@@ -123,7 +133,7 @@ function Modal({ openModal, setOpenModal }) {
 
                     <TextInput
                         title={'Quelle'}
-                        placeholder={'your comment...'}
+                        placeholder={'Bitte Quelle angeben...'}
                         type={'text'}
                         value={quelle}
                         setValue={setQuelle}

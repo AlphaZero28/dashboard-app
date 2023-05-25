@@ -6,8 +6,8 @@ import styles from './scoreSelect.module.css'
 const ScoreSelect = ({ optionData, value, onChange, row, style }) => {
     // console.log('value', value);
     // console.log(optionData);
-    const cellValue = value === null ? ' ' : value
-    const [selectedValue, setSelectedValue] = useState(cellValue);
+    // const cellValue = value === null ? ' ' : value
+    const [selectedValue, setSelectedValue] = useState(value);
 
     const handleOnChange = (e) => {
         // console.log('change', e.target.value);

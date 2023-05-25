@@ -31,7 +31,7 @@ function Table() {
     }, [])
 
     const handleOnChange = (updatedData) => {
-        console.log('updated', updatedData);
+        // console.log('updated', updatedData);
         // setUpdatedData(updatedData)
         setLeadData(updatedData)
     }
@@ -194,7 +194,7 @@ function Table() {
                     <div >
                         <NewLead setLeadData={setLeadData} />
                         <ExportCSV data={leadData} filteredData={filteredData} />
-                        <SaveData leadData={updatedData} />
+                        <SaveData leadData={leadData} />
                     </div>
 
 
