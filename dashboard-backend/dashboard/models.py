@@ -3,9 +3,9 @@ from django.db import models
 
 # Create your models here.
 class Dashboard(models.Model):
-    name = models.TextField(null=True, blank=True)
+    name = models.TextField()
     telefon = models.TextField(null=True, blank=True)
-    email = models.EmailField(null=True, blank=True)
+    email = models.TextField()
     produkt = models.TextField(null=True)
     status = models.TextField(null=True)
     score = models.TextField(null=True)

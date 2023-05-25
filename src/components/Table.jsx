@@ -24,7 +24,7 @@ function Table() {
     const onError = err => {
         console.log(err)
     }
-    let leadAPI = new LeadAPI
+    let leadAPI = new LeadAPI()
 
     useEffect(() => {
         leadAPI.get_all_leads(onResponse, onError)

@@ -81,8 +81,7 @@ function Modal({ openModal, setOpenModal }) {
                 >
 
                     <TextInput
-                        required={true}
-                        title={'Vorname'}
+                        title={'Name'}
                         placeholder={'Mikhail Tal'}
                         value={name}
                         setValue={setName}
@@ -90,14 +89,14 @@ function Modal({ openModal, setOpenModal }) {
 
                     <TextInput
                         title={'Telefon'}
-                        placeholder={'+4930 123 456 789'}
+                        placeholder={'+45-5686446'}
                         value={telefon}
                         setValue={setTelefon}
                     />
 
                     <TextInput
                         title={'E-Mail'}
-                        placeholder={'info@kunde.de'}
+                        placeholder={'tal@gmail.com'}
                         type={'email'}
                         value={email}
                         setValue={setEmail}
@@ -124,14 +123,13 @@ function Modal({ openModal, setOpenModal }) {
 
                     <TextInput
                         title={'Quelle'}
-                        placeholder={'Bitte Quelle angeben...'}
+                        placeholder={'your comment...'}
                         type={'text'}
                         value={quelle}
                         setValue={setQuelle}
                     />
                     <TextInput
-                        style={{ textAlign: 'center' }}
-                        title={'Datum'}
+                        title={'Date'}
                         type={'date'}
                         value={date}
                         setValue={setDate}
@@ -146,7 +144,7 @@ function Modal({ openModal, setOpenModal }) {
                 </form>
             </div>
 
-        </div>
+        </div >
 
     )
 }
