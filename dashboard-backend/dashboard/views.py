@@ -56,7 +56,7 @@ def new_lead(request):
         print("entry saved")
         # instance_serializer = DashboardSerializer(instance, data={})
         # if instance_serializer.is_valid():
-            # return Response({"msg": "successful", 'id': instance.id}, status=status.HTTP_200_OK)
+        # return Response({"msg": "successful", 'id': instance.id}, status=status.HTTP_200_OK)
         return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -81,3 +81,14 @@ def update_lead_data(request):
             print('update saved')
 
     return Response({"msg": "successful"}, status=status.HTTP_200_OK)
+
+
+@api_view(['DELETE'])
+def delete_lead(request):
+    id = request.data['id']
+    obj = Dashboard.objects.filter(id=id)
+    if obj.exists():
+        obj = obj.first()
+        obj.delete()
+        return Response({"msg": "successful"}, status=status.HTTP_200_OK)
+    return Response({"msg": "Couldn't delete. Object don't exists!"}, status=status.HTTP_400_BAD_REQUEST)
