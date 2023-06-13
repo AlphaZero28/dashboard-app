@@ -31,8 +31,8 @@ class LeadAPI {
             .catch(onError)
     }
 
-    delete_lead(onResponse, onError, row_id) {
-        axios.delete(url + 'delete-lead/', row_id, this.headers)
+    delete_lead(onResponse, onError, id) {
+        axios.delete(url + 'delete-lead/', {data:{id}}, this.headers)
             .then(onResponse)
             .catch(onError)
     }

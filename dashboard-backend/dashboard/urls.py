@@ -7,6 +7,7 @@ urlpatterns = [
     path("api/new-lead/", views.new_lead),
     path("api/lead-segment/", views.get_leads),
     path("api/update-lead-data/", views.update_lead_data),
+    path("api/delete-lead/", views.delete_lead),
     path("static/<str:folder>/<str:filename>", views.static),
     path("<slug:path>/", views.index, name="index"),
     path("", views.index, name="index")
