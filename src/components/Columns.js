@@ -53,7 +53,7 @@ const filterTypes = {
 
 };
 
-export const COLUMNS = (handleOnChange, setFilteredData, leadData, setLeadData) => [
+export const COLUMNS = (handleOnChange, setFilteredData, leadData, setLeadData, updatedLead, setUpdatedLead) => [
     {
         Header: 'Lead No.',
         accessor: 'id',
@@ -97,13 +97,18 @@ export const COLUMNS = (handleOnChange, setFilteredData, leadData, setLeadData) 
                 row={row}
 
                 onChange={(row, newVal) => {
+                    let updatedItem;
+
                     const updatedData = leadData.map((item) => {
                         if (item.id === row.original.id) {
-                            return { ...item, produkt: newVal }
+                            updatedItem = { ...item, status: newVal }; // Save the updated item
+                            // console.log('updateditem inside', updatedItem);
+                            return updatedItem
+                            // return { ...item, status: newVal }
                         }
                         return item
                     });
-                    handleOnChange(updatedData)
+                    handleOnChange(updatedData, updatedItem)
                 }}
             />
         )
@@ -126,13 +131,19 @@ export const COLUMNS = (handleOnChange, setFilteredData, leadData, setLeadData) 
                 value={row.values.status}
                 row={row}
                 onChange={(row, newVal) => {
+                    let updatedItem;
+
                     const updatedData = leadData.map((item) => {
                         if (item.id === row.original.id) {
-                            return { ...item, status: newVal }
+                            updatedItem = { ...item, status: newVal }; // Save the updated item
+                            // console.log('updateditem inside', updatedItem);
+                            return updatedItem
+                            // return { ...item, status: newVal }
                         }
                         return item
                     });
-                    handleOnChange(updatedData)
+                    handleOnChange(updatedData, updatedItem)
+                    // setUpdatedLead([...updatedLead, updatedItem])
                 }}
             />
         )
@@ -155,13 +166,18 @@ export const COLUMNS = (handleOnChange, setFilteredData, leadData, setLeadData) 
                 value={row.values.score}
                 row={row}
                 onChange={(row, newVal) => {
+                    let updatedItem;
+
                     const updatedData = leadData.map((item) => {
                         if (item.id === row.original.id) {
-                            return { ...item, score: newVal }
+                            updatedItem = { ...item, score: newVal }; // Save the updated item
+                            // console.log('updateditem inside', updatedItem);
+                            return updatedItem
+                            // return { ...item, status: newVal }
                         }
                         return item
                     });
-                    handleOnChange(updatedData)
+                    handleOnChange(updatedData, updatedItem)
                 }}
             />
         )
@@ -187,7 +203,7 @@ export const COLUMNS = (handleOnChange, setFilteredData, leadData, setLeadData) 
     {
         Header: "Actions",
         Cell: ({ row }) => (
-            <Actions row={row} leadData={leadData} setLeadData={setLeadData} />
+            <Actions row={row} leadData={leadData} setLeadData={setLeadData} updatedLead={updatedLead} setUpdatedLead={setUpdatedLead} />
         )
     }
 

@@ -14,6 +14,7 @@ function Table() {
     const [leadData, setLeadData] = useState([])
     const [updatedData, setUpdatedData] = useState([])
     const [filteredData, setFilteredData] = useState([]);
+    const [updatedLead, setUpdatedLead] = useState([])
 
 
 
@@ -33,10 +34,13 @@ function Table() {
         leadAPI.get_all_leads(onResponse, onError)
     }, [])
 
-    const handleOnChange = (updatedData) => {
+    const handleOnChange = (updatedData, updatedItem) => {
         // console.log('updated', updatedData);
         // setUpdatedData(updatedData)
         setLeadData(updatedData)
+        setUpdatedLead([...updatedLead, updatedItem])
+        // console.log('updated item', updatedItem);
+        // console.log('updatd data', updatedData);
     }
 
     const handleCellChange = (row, newVal) => {
@@ -56,7 +60,10 @@ function Table() {
             handleOnChange,
             setFilteredData,
             leadData,
-            setLeadData),
+            setLeadData,
+            updatedLead,
+            setUpdatedLead
+        ),
         [leadData])
 
     const data = useMemo(() => leadData, [leadData])
@@ -204,7 +211,7 @@ function Table() {
                     <div >
                         <NewLead setLeadData={setLeadData} />
                         <ExportCSV data={leadData} filteredData={filteredData} />
-                        <SaveData leadData={leadData} />
+                        <SaveData updatedLead={updatedLead} setUpdatedLead={setUpdatedLead} />
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import { LeadAPI } from '../../api/LeadAPI'
 import { ScoreOption, StatusOption, ProduktOption } from '../../config'
 import styles from './editModal.module.css'
 
-function Modal({ openModal, setOpenModal, row, leadData, setLeadData }) {
+function Modal({ openModal, setOpenModal, row, leadData, setLeadData, updatedLead, setUpdatedLead }) {
 
     // console.log('row', row.original);
     const [name, setName] = useState(row.original.name)
@@ -42,9 +42,9 @@ function Modal({ openModal, setOpenModal, row, leadData, setLeadData }) {
             "datum": date
         }
 
-        let leadAPI = new LeadAPI()
+        // let leadAPI = new LeadAPI()
 
-        leadAPI.update_lead(onResponse, onError, data)
+        // leadAPI.update_lead(onResponse, onError, data)
 
         const updatedData = leadData.map(lead => {
             if (lead.id === row.original.id) {
@@ -63,6 +63,8 @@ function Modal({ openModal, setOpenModal, row, leadData, setLeadData }) {
             return lead;
         });
         console.log('updated', updatedData);
+
+        setUpdatedLead([...updatedLead, data])
         setLeadData(updatedData);
 
         const timer = setTimeout(() => {
