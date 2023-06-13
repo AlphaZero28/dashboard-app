@@ -6,6 +6,7 @@ import { COLUMNS } from './Columns'
 import ExportCSV from './utils/ExportCSV'
 import NewLead from './utils/NewLead'
 import SaveData from './utils/SaveData'
+import WarningModal from './utils/DeleteModal'
 
 
 
@@ -14,12 +15,14 @@ function Table() {
     const [updatedData, setUpdatedData] = useState([])
     const [filteredData, setFilteredData] = useState([]);
 
+
+
     const [pageNumber, setPageNumber] = useState(1)
 
     const onResponse = res => {
         setLeadData(res.data)
         setUpdatedData(res.data)
-        // console.log(res.data)
+        console.log(res.data)
     }
     const onError = err => {
         console.log(err)
@@ -52,7 +55,8 @@ function Table() {
         COLUMNS(
             handleOnChange,
             setFilteredData,
-            leadData),
+            leadData,
+            setLeadData),
         [leadData])
 
     const data = useMemo(() => leadData, [leadData])
@@ -83,6 +87,8 @@ function Table() {
     } = tableInstance
 
     const { pageIndex, pageSize } = state
+
+
 
 
     return (
@@ -116,6 +122,10 @@ function Table() {
                                             {cell.render('Cell')}
                                         </td>
                                     ))}
+
+
+
+
                                 </tr>
                             )
                         })}
@@ -196,11 +206,8 @@ function Table() {
                         <ExportCSV data={leadData} filteredData={filteredData} />
                         <SaveData leadData={leadData} />
                     </div>
-
-
                 </div>
             </div>
-
 
 
         </div>

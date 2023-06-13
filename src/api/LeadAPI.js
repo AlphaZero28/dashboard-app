@@ -30,6 +30,19 @@ class LeadAPI {
             .then(onResponse)
             .catch(onError)
     }
+
+    delete_lead(onResponse, onError, row_id) {
+        axios.delete(url + 'delete-lead/', row_id, this.headers)
+            .then(onResponse)
+            .catch(onError)
+    }
+
+    update_lead(onResponse, onError, data) {
+        console.log('edited row', data);
+        axios.post(url + 'update-lead/', data, this.headers)
+            .then(onResponse)
+            .catch(onError)
+    }
 }
 
 export { LeadAPI }

@@ -5,6 +5,7 @@ import { format, parse, parseISO, isAfter, isBefore } from "date-fns"
 import ScoreSelect from "./cell-component/ScoreSelect"
 import { ScoreOption, StatusOption, ProduktOption } from "../config"
 import DateRangeColumnFilter from "./header-component/DateFilterRange"
+import Actions from "./cell-component/Actions"
 
 
 
@@ -52,7 +53,7 @@ const filterTypes = {
 
 };
 
-export const COLUMNS = (handleOnChange, setFilteredData, leadData) => [
+export const COLUMNS = (handleOnChange, setFilteredData, leadData, setLeadData) => [
     {
         Header: 'Lead No.',
         accessor: 'id',
@@ -182,6 +183,12 @@ export const COLUMNS = (handleOnChange, setFilteredData, leadData) => [
             return <span>{date.toLocaleDateString(date)}</span>
 
         }
+    },
+    {
+        Header: "Actions",
+        Cell: ({ row }) => (
+            <Actions row={row} leadData={leadData} setLeadData={setLeadData} />
+        )
     }
 
 ]

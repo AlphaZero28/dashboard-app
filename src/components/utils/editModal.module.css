@@ -1,0 +1,132 @@
+.Btn {
+    background-color: #3f5c79;
+    border: 2px solid #3f5c79;
+    border-radius: 10px;
+    color: white;
+
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+
+    display: inline-block;
+    font-size: 15px;
+    margin: 10px 10px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+
+    box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    transition: background-color 0.3s ease;
+}
+
+.Btn:hover {
+    background-color: #2a3f54;
+    border: 2px solid #2a3f54;
+    color: white;
+}
+
+.Btn:focus {
+    background-color: #34495E;
+    color: white;
+    outline: 2px solid #34495E;
+    box-shadow: rgba(60, 64, 67, .3) 0 5px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+
+
+}
+
+.modal {
+    /* width: 100vw;
+    height: 100vh; */
+    background-color: rgba(200, 200, 200, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-top: 20px;
+    padding-bottom: 20px; */
+    /* padding-top: 50px; */
+    /* overflow-y: auto; */
+}
+
+.modalBackground {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(200, 200, 200, 0.6);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* top: 20px; */
+    /* bottom: 10px; */
+}
+
+.modalContainer {
+    width: 50vw;
+    height: 90vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+}
+
+.modalCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.closeBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+}
+
+.modalTitle {
+    display: inline-block;
+    text-align: center;
+}
+
+.title {
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.body {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.submitBtn {
+    width: 250px;
+    height: 35px;
+    margin: 10px;
+    border: none;
+    background-color: rgb(63, 115, 211);
+    color: white;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.submitBtn:hover {
+    background-color: rgb(40, 94, 195);
+}
+
+.submitBtn:focus {
+    background-color: rgb(40, 94, 195);
+    outline: 1px solid lightgrey;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
