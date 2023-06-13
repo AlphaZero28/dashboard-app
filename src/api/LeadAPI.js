@@ -1,6 +1,8 @@
 import axios from "axios";
 import url from "./url";
 
+console.log(url);
+
 class LeadAPI {
     constructor() {
         this.headers = {
@@ -32,7 +34,7 @@ class LeadAPI {
     }
 
     delete_lead(onResponse, onError, id) {
-        axios.delete(url + 'delete-lead/', {data:{id}}, this.headers)
+        axios.delete(url + 'delete-lead/', { data: { id } }, this.headers)
             .then(onResponse)
             .catch(onError)
     }

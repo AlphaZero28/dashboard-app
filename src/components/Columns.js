@@ -101,7 +101,7 @@ export const COLUMNS = (handleOnChange, setFilteredData, leadData, setLeadData, 
 
                     const updatedData = leadData.map((item) => {
                         if (item.id === row.original.id) {
-                            updatedItem = { ...item, status: newVal }; // Save the updated item
+                            updatedItem = { ...item, produkt: newVal }; // Save the updated item
                             // console.log('updateditem inside', updatedItem);
                             return updatedItem
                             // return { ...item, status: newVal }
