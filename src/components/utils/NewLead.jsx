@@ -7,7 +7,7 @@ import { LeadAPI } from '../../api/LeadAPI'
 import Modal from './Modal'
 
 
-function NewLead({ setLeadData }) {
+function NewLead({ setLeadData, leadData }) {
     const [openModal, setOpenModal] = useState(false)
     return (
 
@@ -19,7 +19,7 @@ function NewLead({ setLeadData }) {
                 Lead Erstellen
             </button>
 
-            {openModal && <Modal openModal={openModal} setOpenModal={setOpenModal} />}
+            {openModal && <Modal openModal={openModal} setOpenModal={setOpenModal} leadData={leadData} setLeadData={setLeadData} />}
         </>
 
     )

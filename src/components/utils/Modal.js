@@ -5,7 +5,7 @@ import { LeadAPI } from '../../api/LeadAPI'
 import { ScoreOption, StatusOption, ProduktOption } from '../../config'
 import styles from './newLead.module.css'
 
-function Modal({ openModal, setOpenModal }) {
+function Modal({ openModal, setOpenModal, leadData, setLeadData }) {
 
     const [name, setName] = useState('')
     const [telefon, setTelefon] = useState('')
@@ -39,6 +39,8 @@ function Modal({ openModal, setOpenModal }) {
             'quelle': quelle,
             "datum": date
         }
+
+        setLeadData([...leadData, data])
 
         let leadAPI = new LeadAPI()
 

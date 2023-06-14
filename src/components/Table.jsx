@@ -209,7 +209,7 @@ function Table() {
                     </div>
 
                     <div >
-                        <NewLead setLeadData={setLeadData} />
+                        <NewLead leadData={leadData} setLeadData={setLeadData} />
                         <ExportCSV data={leadData} filteredData={filteredData} />
                         <SaveData updatedLead={updatedLead} setUpdatedLead={setUpdatedLead} />
                     </div>
