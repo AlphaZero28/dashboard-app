@@ -19,6 +19,7 @@ class LeadAPI {
     }
 
     update_lead_data(onResponse, onError, data) {
+        // console.log('first')
         axios.put(url + 'update-lead-data/', data, this.headers)
             .then(onResponse)
             .catch(onError)

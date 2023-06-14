@@ -1,0 +1,20 @@
+hostname: https://h3009473.stratoserver.net
+
+
+# Creds
+VPS ip address: 81.169.149.31
+user: root
+password: k96c7X851
+
+
+# upload build.zip to /home/dashboard-backend/dashboard/templates folder
+# Commands
+cd /home/dashboard-backend/dashboard/templates
+unzip build.zip
+reboot
+
+
+# Notes
+- Don't forget to change backend url in frontend code.
+
+
