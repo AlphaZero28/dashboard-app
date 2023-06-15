@@ -104,7 +104,7 @@ function Modal({ openModal, setOpenModal, row, leadData, setLeadData, updatedLea
                 </div>
 
                 <div className={styles.modalTitle}>
-                    <h2 className={styles.title}>Edit the Lead</h2>
+                    <h2 className={styles.title}>Lead bearbeiten</h2>
                 </div>
                 <form
                     onSubmit={handleSubmit}

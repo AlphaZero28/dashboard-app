@@ -42,14 +42,15 @@ function WarningModal({ setOpenDeleteModal, selectedRow, leadData, setLeadData }
         <div className={styles.modalBackground}>
             <div className={styles.modalBody}>
                 <AiFillWarning size={35} color='blue' style={{ marginBottom: '20px' }} />
-                Are you sure to delete the row?
+                {/* Are you sure to delete the row? */}
+                Möchten Sie diesen Eintrag löschen?
 
                 <div className={styles.btnContainer}>
                     <button className={styles.Ybtn} onClick={handleYes}>
-                        Yes
+                        Ja
                     </button>
                     <button className={styles.Nbtn} onClick={handleNo}>
-                        No
+                        Nein
                     </button>
                 </div>
             </div>

@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-m=5^p93&sh6^2sq453zh+j@qd$x*3lx_xsjz#z#-i51gd+ha+u
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-PRODUCTION = False
+PRODUCTION = True
 
 if not PRODUCTION:
     ALLOWED_HOSTS = ['h3009473.stratoserver.net', 'localhost', '127.0.0.1']
