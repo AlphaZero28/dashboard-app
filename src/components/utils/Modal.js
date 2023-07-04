@@ -20,6 +20,7 @@ function Modal({ openModal, setOpenModal, leadData, setLeadData }) {
     const onResponse = (res) => {
         // setLeadData(res.data)
         console.log('res', res.data);
+        setLeadData([...leadData, res.data])
     }
 
     const onError = (err) => {
@@ -40,7 +41,7 @@ function Modal({ openModal, setOpenModal, leadData, setLeadData }) {
             "datum": date
         }
 
-        setLeadData([...leadData, data])
+        // setLeadData([...leadData, data])
 
         let leadAPI = new LeadAPI()
 

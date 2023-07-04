@@ -72,6 +72,7 @@ def get_leads(request):
 @api_view(['PUT'])
 def update_lead_data(request):
     print(request.data)
+    errors = []
     for elem in request.data:
         object = Dashboard.objects.filter(id=elem["id"]).first()
         serializer = DashboardSerializer(object, data=elem)
@@ -79,8 +80,11 @@ def update_lead_data(request):
         if serializer.is_valid():
             serializer.save()
             print('update saved')
-
-    return Response({"msg": "successful"}, status=status.HTTP_200_OK)
+        else:
+            errors.append(serializer.errors)
+    if len(errors) == 0:
+        return Response({"msg": "successful"}, status=status.HTTP_200_OK)
+    return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['DELETE'])
