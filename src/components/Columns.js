@@ -6,6 +6,8 @@ import ScoreSelect from "./cell-component/ScoreSelect"
 import { ScoreOption, StatusOption, ProduktOption } from "../config"
 import DateRangeColumnFilter from "./header-component/DateFilterRange"
 import Actions from "./cell-component/Actions"
+import ViewEmail from "./cell-component/ViewEmail"
+import { Link } from "react-router-dom"
 
 
 
@@ -73,7 +75,7 @@ export const COLUMNS = (handleOnChange, setFilteredData, leadData, setLeadData, 
         disableFilters: true
     },
     {
-        Header: "E-Mail",
+        Header: "E-Mail Adresse",
         accessor: 'email',
         Filter: QuelleFilter,
         disableFilters: true
@@ -205,6 +207,20 @@ export const COLUMNS = (handleOnChange, setFilteredData, leadData, setLeadData, 
         Cell: ({ row }) => (
             <Actions row={row} leadData={leadData} setLeadData={setLeadData} updatedLead={updatedLead} setUpdatedLead={setUpdatedLead} />
         )
+    },
+    {
+        Header: 'E-Mail',
+        accessor: 'email-view',
+        Cell: ({ row }) => (
+            // <div style={{ color: '#0000ee', textDecoration: 'underline' }}>
+
+            <Link to="https://www.google.com" target="_blank" style={{ color: '#0000ee' }}>
+                E-Mail anzeigen
+            </Link>
+
+        ),
+        Filter: QuelleFilter,
+        disableFilters: true
     }
 
 ]
