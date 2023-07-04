@@ -210,7 +210,7 @@ export const COLUMNS = (handleOnChange, setFilteredData, leadData, setLeadData, 
     },
     {
         Header: 'E-Mail',
-        accessor: 'email-view',
+        accessor: 'email_view',
         Cell: ({ row }) => (
             // <div style={{ color: '#0000ee', textDecoration: 'underline' }}>
 

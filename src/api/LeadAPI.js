@@ -12,6 +12,12 @@ class LeadAPI {
         }
     }
 
+    login(onResponse, onError, password) {
+        axios.post(url + 'login/', { data: { password } }, this.headers)
+            .then(onResponse)
+            .catch(onError)
+    }
+
     get_all_leads(onResponse, onError) {
         // console.log('getting leads')
         console.log('url', url)
