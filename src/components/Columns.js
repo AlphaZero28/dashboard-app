@@ -213,10 +213,20 @@ export const COLUMNS = (handleOnChange, setFilteredData, leadData, setLeadData, 
         accessor: 'email_view',
         Cell: ({ row }) => (
             // <div style={{ color: '#0000ee', textDecoration: 'underline' }}>
+            <>
+                {
+                    row.values.email_view === '' ?
+                        <Link to="https://www.google.com" target="_blank" style={{ color: '#0000ee' }}>
+                            E-Mail anzeigen
+                            {/* {console.log('row',row)} */}
+                        </Link>
+                        : <Link to={row.values.email_view} target="_blank" style={{ color: '#0000ee' }}>
+                            E-Mail anzeigen
+                            {/* {console.log('row',row)} */}
+                        </Link>
+                }
+            </>
 
-            <Link to="https://www.google.com" target="_blank" style={{ color: '#0000ee' }}>
-                E-Mail anzeigen
-            </Link>
 
         ),
         Filter: QuelleFilter,

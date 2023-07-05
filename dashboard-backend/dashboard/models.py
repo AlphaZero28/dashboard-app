@@ -11,6 +11,7 @@ class Dashboard(models.Model):
     score = models.TextField(null=True, blank=True)
     quelle = models.TextField(null=True, blank=True)
     datum = models.DateTimeField(null=True, blank=True)
+    email_view = models.TextField(blank=True, default='')
     # first_name = models.CharField(max_length=30)
     # last_name = models.CharField(max_length=30)
 #     mac_address = models.TextField()

@@ -13,10 +13,21 @@ from django.template import loader
 
 from .serializers import Dashboard, DashboardSerializer
 
+from utils import get_password
+
 
 @api_view(['GET', 'POST'])
 def sample(request):
     return JsonResponse({"hi": "hello"}, safe=False, status=status.HTTP_200_OK)
+
+
+@api_view(['GET', 'POST'])
+def login(request):
+    rd = request.data
+    password = rd['password']
+    server_password = get_password()
+    matched = True if password == server_password else False
+    return Response({"msg": "successful", 'matched': matched}, status=status.HTTP_200_OK)
 
 
 def index(request, path=''):

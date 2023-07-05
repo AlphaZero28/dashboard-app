@@ -13,7 +13,7 @@ class LeadAPI {
     }
 
     login(onResponse, onError, password) {
-        axios.post(url + 'login/', { data: { password } }, this.headers)
+        axios.post(url + 'login/', { password }, this.headers)
             .then(onResponse)
             .catch(onError)
     }

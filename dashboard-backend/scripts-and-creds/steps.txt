@@ -42,6 +42,8 @@ sudo systemctl daemon-reload
 sudo systemctl start gunicorn.socket
 sudo systemctl enable gunicorn.socket
 
+# restart with new build
+sudo systemctl restart gunicorn.socket
 sudo systemctl restart nginx
 
 # see nginx error

@@ -5,72 +5,57 @@ import Table from '../Table'
 import { FaUserCircle } from 'react-icons/fa'
 import styles from './login.module.css'
 
-
-function Login() {
-    const [passcode, setPasscode] = useState('')
-    const [isAllowed, setIsAllowed] = useState(true)
-    const navigation = useNavigate()
-
-    const onResponse = (res) => {
-        console.log(res.data);
-        setIsAllowed(res.data.data)
-        if (res.data.data === true) {
-            navigation('/')
-        }
-
+function Login ({ password, setPassword, setPasswordMatched }) {
+  const onResponse = res => {
+    // console.log(res.data)
+    if (res.data.msg === 'successful') {
+      setPasswordMatched(res.data.matched)
+      localStorage.setItem('matched', res.data.matched)
+      if (res.data.matched) {
+        localStorage.setItem('password', password)
+        setPassword('')
+      } else {
+        localStorage.setItem('password', null)
+        alert('Password Did Not Matched')
+      }
     }
+  }
 
-    const onError = err => {
-        console.log(err);
-    }
+  const onError = err => {
+    console.log(err)
+  }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+  const handleSubmit = e => {
+    e.preventDefault()
+    const leadAPI = new LeadAPI()
+    leadAPI.login(onResponse, onError, password)
+  }
 
-        const leadAPI = new LeadAPI()
-        leadAPI.login(onResponse, onError, passcode)
-        setPasscode('')
-    }
-
-    return (
-        <div className={styles.container}>
-
-
-            <form onSubmit={handleSubmit} className={styles.form}>
-                <div className={styles.header}>
-                    <FaUserCircle size={30} />
-                    <div className={styles.Htext}>Login</div>
-
-                </div>
-                <label className={styles.label}>Enter your passcode</label>
-                <input
-                    className={styles.input}
-                    // placeholder=''
-                    type='password'
-                    autoComplete="new-password"
-                    value={passcode}
-                    onChange={e => setPasscode(e.target.value)}
-                />
-
-                {
-                    isAllowed ?
-                        null
-                        : <div className={styles.warning}>
-                            Sorry, you are not allowed!
-                        </div>
-                }
-
-
-                <input
-                    className={styles.btn}
-                    type='submit'
-                />
-            </form>
-
+  return (
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.header}>
+          <FaUserCircle size={30} />
+          <div className={styles.Htext}>Login</div>
         </div>
+        <label className={styles.label}>Geben Sie Ihr Passwort ein</label>
+        <input
+          className={styles.input}
+          // placeholder=''
+          type='password'
+          autoComplete='new-password'
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
 
+        {/* {isAllowed ? null : (
+          <div className={styles.warning}>Sorry, you are not allowed!</div>
+        )} */}
 
-    )
+        <input className={styles.btn} type='submit' />
+      </form>
+    </div>
+  )
 }
 
 export default Login
