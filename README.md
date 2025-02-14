@@ -9,6 +9,9 @@ This project is a dashboard application developed using React.js for the fronten
 - **Data Filtering**: Filter data based on various criteria such as product type, status, and scores.
 - **Export Data**: Ability to export data to CSV format.
 
+
+![dashboard](https://github.com/user-attachments/assets/3bf9fda8-c757-439e-9761-e8698de4c3fe)
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
