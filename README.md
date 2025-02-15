@@ -20,8 +20,6 @@ Before you begin, ensure you have the following installed:
   ```bash
   pip install django
 
-
-
 - Backened folder: *dashboard_backend*
 
 ## Notes
