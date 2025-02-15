@@ -1,4 +1,3 @@
-# Dashboard App 
 # Dashboard Application
 
 This project is a dashboard application developed using React.js for the frontend and Django for the backend. It provides an interface for managing and viewing data, such as user details and system metrics.
